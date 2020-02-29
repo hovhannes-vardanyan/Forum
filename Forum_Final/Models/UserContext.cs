@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Forum_Final
+namespace Forum_Final.Models
 {
     public class UserContext : DbContext
     {
-        public DbSet<Users> dataUsers { get; set; } // creating Db for Users, and using this we can add,delete and save users in our Db
+        public DbSet<User> usersData { get; set; } // using to save our users in Db
     }
 }
