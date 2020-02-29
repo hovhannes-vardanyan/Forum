@@ -15,7 +15,7 @@ namespace Forum_Final.Models
 
 
         //creating user
-        public Users(string name, string surname, string login, string password)
+        public User(string name, string surname, string login, string password)
         {
             this.UserName = name;
             this.UserSurname = surname;
