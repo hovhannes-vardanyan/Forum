@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Forum_Final.Interfaces.Post_Comment
 {
-    interface IMassage
+    public interface IMassage
     {
-        // Upload
-        // Delete
-        // Edit
+        public void Upload(IMassage msg);
+
+        //Find Msg By id and Delete
+        public void Delete(int id);
+
+        //Find The old post or comment with by id and replace it by newMsg
+        public void Edit(int id,IMassage newMsg);
     }
 }

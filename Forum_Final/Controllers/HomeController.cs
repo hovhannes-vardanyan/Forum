@@ -26,5 +26,9 @@ namespace Forum_Final.Controllers
 
             return View();
         }
+        public ActionResult Post()
+        {
+            return View();
+        }
     }
 }
