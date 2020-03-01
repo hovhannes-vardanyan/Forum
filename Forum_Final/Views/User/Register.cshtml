@@ -1,0 +1,36 @@
+﻿@model  Forum_Final.Models.User
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+<div class="row">
+    <div class="col-md-5">
+        <h2>@ViewBag.Title</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <p>@Html.LabelFor(model => model.UserName) @Html.EditorFor(model => model.UserName)</p>
+            <p>@Html.LabelFor(model => model.UserSurname) @Html.EditorFor(model => model.UserSurname)</p>
+            <p>@Html.LabelFor(model => model.UserLogin) @Html.EditorFor(model => model.UserLogin)</p>
+            <p>@Html.LabelFor(model => model.UserPassword) @Html.PasswordFor(model => model.UserPassword)</p>
+            <p><input type="submit" value="Register" /></p>
+
+
+
+
+
+
+        }
+    </div>
+    <div class="col-md-5">
+        <h2>Already have an account ?</h2>
+        @Html.ActionLink("Login", "Login", "User")
+
+    </div>
+</div>

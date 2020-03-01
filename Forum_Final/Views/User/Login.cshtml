@@ -1,0 +1,28 @@
+﻿@model  Forum_Final.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="row">
+    <div class="col-md-5">
+        <h2>Login</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <p>@Html.LabelFor(model => model.UserLogin) @Html.EditorFor(model => model.UserLogin)</p>
+            <p>@Html.LabelFor(model => model.UserPassword) @Html.PasswordFor(model => model.UserPassword)</p>
+            <p><input type="submit" value="Login" /></p>
+
+
+
+
+
+
+        }
+    </div>
+</div>
+
