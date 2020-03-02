@@ -11,20 +11,20 @@ namespace Forum_Final.Controllers
     public class UserController : Controller
     {
         UserRepository UserRepository = new UserRepository();
-        public ActionResult Index()
+        public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "FirstName,LastName,Username,Password")] User user)
+        public ActionResult Register([Bind(Include = "UserName,UserSurname,UserLogin,UserPassword")] User user)
         {
 
             if (ModelState.IsValid)
             {
                 UserRepository.AddUser(user);
-                return RedirectToAction("Index");
+                return RedirectToAction("Register");
 
             }
 

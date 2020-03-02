@@ -9,19 +9,19 @@ namespace ForumDAL
     public class User
     {
         [Key]
-        public int UserId { get; private set; } // unique user Id
+        public int UserId { get; set; } // unique user Id
 
         //Display is need for showing property names for UI
         [Display(Name ="First Name")]
-        public string UserName { get; private set; }
+        public string UserName { get;  set; }
         [Display(Name = "Last Name")]
 
-        public string UserSurname { get; private set; }
+        public string UserSurname { get; set; }
         [Display(Name = "Username")]
-       public string UserLogin { get; private set; }
+       public string UserLogin { get; set; }
         [Display(Name = "Password")]
 
-        public string UserPassword { get; private set; }
+        public string UserPassword { get; set; }
         
         
         public User()
