@@ -11,7 +11,7 @@ namespace ForumDAL
         public string Title { get; set; }
         public int UserID { get; set; }
         public DateTime DateTime { get => DateTime.Now; set { } }
-        public Message(int postID, string title, int userID)
+        public Message(string title, int userID)
         {           
             this.Title = title;
             this.UserID = userID;
