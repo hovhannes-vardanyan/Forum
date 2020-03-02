@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Repositories
 {
-    class PostRepository : IMessage
+    public class PostRepository : IMessage
     {
         
         public Post GetPostById(int PostID)

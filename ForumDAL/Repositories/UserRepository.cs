@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Repositories
 {
-    class UserRepository
+  public class UserRepository
     {
         ForumContext context;
         public UserRepository()
