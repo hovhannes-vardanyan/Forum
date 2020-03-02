@@ -8,7 +8,8 @@ namespace ForumDAL
 {
     public class User
     {
-        public int UserId = 0; // unique user Id
+        [Key]
+        public int UserId { get; private set; } // unique user Id
 
         //Display is need for showing property names for UI
         [Display(Name ="First Name")]
@@ -28,13 +29,13 @@ namespace ForumDAL
 
         }
         //creating user
-        public User(string name, string surname, string login, string password)
+        public User(string name, string surname, string login, string password, int id)
         {
             this.UserName = name;
             this.UserSurname = surname;
             this.UserLogin = login;
             this.UserPassword = password;
-            ++UserId; // getting unique ID
+            this.UserId = id;
         }
     }
 }
