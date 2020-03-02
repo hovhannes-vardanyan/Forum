@@ -10,7 +10,7 @@ namespace ForumDAL
         public string Description { get; set; }
         public List<Comment> CommentList { get; set; }
 
-        public Post(int postID, string title, int userID, string description) : base(postID, title, userID)
+        public Post(int postID, string title, int userID, string description) : base( title, userID)
         {           
             this.Title = title;
             this.UserID = userID;
