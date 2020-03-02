@@ -7,5 +7,6 @@ namespace ForumDAL
 {
     public class Topic
     {
+
     }
 }

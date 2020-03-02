@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,9 +56,12 @@
   <ItemGroup>
     <Compile Include="Interface\IMassage.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Massage.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\Topics\AbstractTopic.cs" />
+    <Compile Include="Models\Topics\MainTopic.cs" />
+    <Compile Include="Models\Topics\SubTopic.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ForumContext\ForumContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
