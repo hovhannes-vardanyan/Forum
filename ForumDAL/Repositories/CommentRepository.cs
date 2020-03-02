@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Repositories
 {
-    class CommentRepository
+   
+    class CommentRepository //:IMessage
     {
     }
 }

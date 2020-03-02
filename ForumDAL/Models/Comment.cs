@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ForumDAL
 {
-    public class Comment
+    public class Comment//:Massage
     {
     }
 }
