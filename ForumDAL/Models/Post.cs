@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Forum_Final.Models.Post
+namespace ForumDAL
 {
     public class Post : Massage, IMassage
     {
@@ -22,7 +22,7 @@ namespace Forum_Final.Models.Post
         // Remove Post      
         public void Delete(int postID)
         {
-            using (PostContext postContext = new PostContext())
+            using (ForumContext postContext = new ForumContext())
             {
                 var oldPost = postContext.Posts.Where(p => p.PostID == postID).First();
                 postContext.Posts.Remove(oldPost);
@@ -33,7 +33,7 @@ namespace Forum_Final.Models.Post
         //Edit Post
         public void Edit(int postID, IMassage msg)
         {
-            using (PostContext postContext = new PostContext())
+            using (ForumContext postContext = new ForumContext())
             {
                 //Cast
                 try
@@ -61,7 +61,7 @@ namespace Forum_Final.Models.Post
         }
         public void Upload(IMassage post)
         {
-            using (PostContext postContext = new PostContext())
+            using (ForumContext postContext = new ForumContext())
             { 
                 try
                 {

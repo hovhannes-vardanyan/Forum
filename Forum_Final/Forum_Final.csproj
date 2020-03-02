@@ -204,14 +204,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\Post-Comment\IMassage.cs" />
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Massage.cs" />
-    <Compile Include="Models\Post\Post.cs" />
-    <Compile Include="Models\Post\PostContext.cs" />
-    <Compile Include="Models\Topic.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,8 +248,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Interfaces\Topics\" />
-    <Folder Include="Interfaces\UserInterfaces\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -271,6 +263,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumDAL\ForumDAL.csproj">
+      <Project>{704288a1-cbb0-4091-bb6c-68430623eab3}</Project>
+      <Name>ForumDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

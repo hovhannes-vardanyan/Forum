@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Forum_Final.Models
+namespace ForumDAL
 {
     public class User
     {

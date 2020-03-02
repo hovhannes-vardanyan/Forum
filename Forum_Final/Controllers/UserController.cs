@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ForumDAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Forum_Final.Models;
+
 namespace Forum_Final.Controllers
 {
     public class UserController : Controller
