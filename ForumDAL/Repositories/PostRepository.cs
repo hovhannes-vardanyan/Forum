@@ -102,10 +102,7 @@ namespace ForumDAL.Repositories
             using (ForumContext postcontext = new ForumContext())
             {
 
-                Post post = new Post();
-                post.CommentList.Add();
-                postcontext.Posts.Add(post)
-
+              
 
             }
 
