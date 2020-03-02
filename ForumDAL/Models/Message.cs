@@ -5,19 +5,18 @@ using System.Web;
 
 namespace ForumDAL
 {
-    public abstract class Massage
+    public abstract class Message
     {
-        public int PostID { get; set; }
+        public int PostID { get => 0; set { } }
         public string Title { get; set; }
         public int UserID { get; set; }
         public DateTime DateTime { get => DateTime.Now; set { } }
-        public Massage(int postID,string title,int userID)
-        {
-            this.PostID = postID;
+        public Message(int postID, string title, int userID)
+        {           
             this.Title = title;
-            this.UserID = userID;            
+            this.UserID = userID;
         }
 
-      
+
     }
 }

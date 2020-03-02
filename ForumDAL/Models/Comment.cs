@@ -5,7 +5,10 @@ using System.Web;
 
 namespace ForumDAL
 {
-    public class Comment//:Massage
+    public class Comment : Message
     {
+        public Comment(int postID, string title, int userID) : base(postID, title, userID)
+        {
+        }
     }
 }

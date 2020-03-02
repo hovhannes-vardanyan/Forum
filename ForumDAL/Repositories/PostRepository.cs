@@ -10,7 +10,7 @@ namespace ForumDAL.Repositories
 {
     class PostRepository : IMessage
     {
-        
+       
         public Post GetPostById(int PostID)
         {
             using (ForumContext postContext = new ForumContext())
