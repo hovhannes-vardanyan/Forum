@@ -10,7 +10,7 @@ namespace ForumDAL.Repositories
 {
     class PostRepository : IMessage
     {
-
+        
         public Post GetPostById(int PostID)
         {
             using (ForumContext postContext = new ForumContext())
@@ -32,8 +32,6 @@ namespace ForumDAL.Repositories
 
 
         }
-
-
         // Remove Post      
         public void Delete(int postID)
         {
@@ -61,7 +59,7 @@ namespace ForumDAL.Repositories
                 {
                     Post newPost = (Post)msg;
                     //Finding Old Post
-                    var oldPost = postContext.Posts.Where(p => p.PostID == postID).First();
+                    var oldPost = GetPostById(postID);
                     // Updating Old Post
                     oldPost.Title = newPost.Title;
                     oldPost.Description = newPost.Description;
@@ -75,12 +73,11 @@ namespace ForumDAL.Repositories
                 {
                     throw new NotImplementedException();
                 }
-
                 postContext.SaveChanges();
 
             }
         }
-        public void Upload(IMessage post)
+        public void Publish(IMessage post)
         {
             using (ForumContext postContext = new ForumContext())
             {
@@ -90,22 +87,22 @@ namespace ForumDAL.Repositories
                 }
                 catch (InvalidCastException)
                 {
-
                     throw new NotImplementedException();
                 }
 
             }
         }
+        
         //Add comments into Comment List
-        public void AddComments(Comment comment, int id)
+        public void AddComments(Comment comment, int postID)
         {
             using (ForumContext postcontext = new ForumContext())
             {
-
+                var post = GetPostById(postID);
+                post.CommentList.Add(comment);
+                postcontext.SaveChanges();
 
             }
-
-
         }
     }
 }
