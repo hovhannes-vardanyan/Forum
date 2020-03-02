@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ForumDAL
 {
-    public class Post : Massage, IMassage
+    public class Post : Massage
     {
         public string Description { get; set; }
         public List<Comment> CommentList { get; set; }
@@ -19,67 +19,7 @@ namespace ForumDAL
             this.Description = description;
         }
 
-        // Remove Post      
-        public void Delete(int postID)
-        {
-            using (ForumContext postContext = new ForumContext())
-            {
-                var oldPost = postContext.Posts.Where(p => p.PostID == postID).First();
-                postContext.Posts.Remove(oldPost);
-                postContext.SaveChanges();
-            }
-
-        }
-        //Edit Post
-        public void Edit(int postID, IMassage msg)
-        {
-            using (ForumContext postContext = new ForumContext())
-            {
-                //Cast
-                try
-                {
-                    Post newPost = (Post)msg;
-                    //Finding Old Post
-                    var oldPost = postContext.Posts.Where(p => p.PostID == postID).First();
-                    // Updating Old Post
-                    oldPost.Title = newPost.Title;
-                    oldPost.Description = newPost.Description;
-                    oldPost.DateTime = newPost.DateTime;
-                }
-                catch (InvalidOperationException)
-                {
-                    throw new NotImplementedException();
-                }
-                catch (InvalidCastException)
-                {
-                    throw new NotImplementedException();
-                }
-
-                postContext.SaveChanges();
-
-            }
-        }
-        public void Upload(IMassage post)
-        {
-            using (ForumContext postContext = new ForumContext())
-            { 
-                try
-                {
-                    postContext.Posts.Add(post as Post);
-                }
-                catch (InvalidCastException)
-                {
-
-                    throw new NotImplementedException();
-                }
-
-            }
-        }
-        //Add comments into Comment List
-        public void AddComments(Comment comment)
-        {
-            CommentList.Add(comment);
-        }
+       
 
 
     }
