@@ -28,36 +28,33 @@ namespace Forum_Final.Models.Post
                 postContext.Posts.Remove(oldPost);
                 postContext.SaveChanges();
             }
-            
+
         }
         //Edit Post
         public void Edit(int postID, IMassage msg)
         {
             using (PostContext postContext = new PostContext())
             {
-                //if IMmasage msg is Post 
-                if (msg is Post)
+                //Cast
+                try
                 {
-                    //Cast
                     Post newPost = (Post)msg;
-                    try
-                    {
-                        //Finding Old Post
-                        var oldPost = postContext.Posts.Where(p => p.PostID == postID).First();
-                        // Updating Old Post
-                        oldPost.Title = newPost.Title;
-                        oldPost.Description = newPost.Description;
-                        oldPost.DateTime = newPost.DateTime;
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        throw new NotImplementedException();
-                    }                                                
+                    //Finding Old Post
+                    var oldPost = postContext.Posts.Where(p => p.PostID == postID).First();
+                    // Updating Old Post
+                    oldPost.Title = newPost.Title;
+                    oldPost.Description = newPost.Description;
+                    oldPost.DateTime = newPost.DateTime;
                 }
-                else
+                catch (InvalidOperationException)
                 {
                     throw new NotImplementedException();
                 }
+                catch (InvalidCastException)
+                {
+                    throw new NotImplementedException();
+                }
+
                 postContext.SaveChanges();
 
             }
@@ -65,18 +62,20 @@ namespace Forum_Final.Models.Post
         public void Upload(IMassage post)
         {
             using (PostContext postContext = new PostContext())
-            {
-                if (post is Post)
+            { 
+                try
                 {
-                    //Casting
                     postContext.Posts.Add(post as Post);
                 }
-                else
+                catch (InvalidCastException)
                 {
+
                     throw new NotImplementedException();
                 }
+
             }
         }
+        //Add comments into Comment List
         public void AddComments(Comment comment)
         {
             CommentList.Add(comment);
