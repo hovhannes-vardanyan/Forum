@@ -86,12 +86,12 @@ namespace ForumDAL.Repositories
         //Add comments into Comment List
         public void AddComments(Comment comment, int postID)
         {
-            comment.PostID = postID;
-            using (ForumContext commentContext = new ForumContext())
-            {
-                commentContext.Comments.Add(comment);
 
-            }
+            comment.PostID = postID;
+
+            postContext.Comments.Add(comment);
+                postContext.SaveChanges();
+
         }
     }
 }

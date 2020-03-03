@@ -7,7 +7,7 @@ namespace ForumDAL
 {
     public abstract class Message
     {
-        public int PostID { get => 0; set { } }
+        public int PostID { get; set; }
         public string Title { get; set; }
         public int UserID { get; set; }
         public DateTime DateTime { get => DateTime.Now; set { } }

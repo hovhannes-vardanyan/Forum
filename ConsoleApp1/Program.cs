@@ -17,7 +17,7 @@ namespace ConsoleApp1
 
             postRepository.Publish(new Post(14,"Hello World",7,"Sdsadasd"));
 
-            postRepository.AddComments(new Comment("comm",7),14);
+            postRepository.AddComments(new Comment("comm",7),1);
 
 
 
