@@ -7,11 +7,15 @@ namespace ForumDAL
 {
     public class Comment : Message
     {
-        public int CommentId { get; set; }
+        public int CommentID { get; }
+        public string Description { get; set; }
 
-        public Comment(string title, int userID) : base(title, userID)
+        public Comment(int commentID, string title, int userID, int postID, string description) : base(title, userID)
         {
-
+            this.Title = title;
+            this.UserID = userID;
+            this.PostID = postID;
+            this.Description = description;
         }
         public Comment()
         {
