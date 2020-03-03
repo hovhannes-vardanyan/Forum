@@ -11,6 +11,7 @@ namespace ForumDAL
 
         public Comment(string title, int userID) : base(title, userID)
         {
+
         }
     }
 }

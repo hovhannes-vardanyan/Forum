@@ -16,7 +16,11 @@ namespace ConsoleApp1
             PostRepository postRepository = new PostRepository();
 
             postRepository.Publish(new Post(14,"Hello World",7,"Sdsadasd"));
-            
+
+            postRepository.AddComments(new Comment("comm",7),14);
+
+
+
         }
     }
 }

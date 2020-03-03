@@ -9,12 +9,12 @@ namespace ForumDAL
     public class ForumContext : DbContext
     {
         public ForumContext()
-            :base("Forum")
+            : base("Forum")
         {
 
         }
         public DbSet<User> usersData { get; set; } // using to save our users in Db
-       public DbSet<Post> Posts { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
     }
 }
