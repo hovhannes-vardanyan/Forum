@@ -13,5 +13,9 @@ namespace ForumDAL
         {
 
         }
+        public Comment()
+        {
+
+        }
     }
 }

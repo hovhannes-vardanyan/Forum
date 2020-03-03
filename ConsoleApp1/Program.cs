@@ -19,7 +19,13 @@ namespace ConsoleApp1
 
             postRepository.AddComments(new Comment("comm",7),1);
 
+            var comments = postRepository.GetComments(1);
 
+            foreach (var item in comments)
+            {
+                Console.WriteLine($"{item.Title} ");
+                
+            }
 
         }
     }
