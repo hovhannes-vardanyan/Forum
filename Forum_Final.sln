@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum_Final", "Forum_Final\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumDAL", "ForumDAL\ForumDAL.csproj", "{704288A1-CBB0-4091-BB6C-68430623EAB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{DE72361A-4E3B-4F9C-82CB-0ACADEA90A40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{704288A1-CBB0-4091-BB6C-68430623EAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{704288A1-CBB0-4091-BB6C-68430623EAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{704288A1-CBB0-4091-BB6C-68430623EAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE72361A-4E3B-4F9C-82CB-0ACADEA90A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE72361A-4E3B-4F9C-82CB-0ACADEA90A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE72361A-4E3B-4F9C-82CB-0ACADEA90A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE72361A-4E3B-4F9C-82CB-0ACADEA90A40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

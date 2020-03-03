@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Repositories
 {
-    public class PostRepository : IMessage
+    public class PostRepository : IMessage<Post>
     {
        
         public Post GetPostById(int PostID)
@@ -50,14 +50,14 @@ namespace ForumDAL.Repositories
 
         }
         //Edit Post
-        public void Edit(int postID, IMessage msg)
+        public void Edit(int postID, Post msg)
         {
             using (ForumContext postContext = new ForumContext())
             {
-                //Cast
+               
                 try
                 {
-                    Post newPost = (Post)msg;
+                    Post newPost = msg;
                     //Finding Old Post
                     var oldPost = GetPostById(postID);
                     // Updating Old Post
@@ -77,24 +77,30 @@ namespace ForumDAL.Repositories
 
             }
         }
-        public void Publish(IMessage post)
+        public void Publish(Post post)
         {
             using (ForumContext postContext = new ForumContext())
             {
-                try
-                {
-                    postContext.Posts.Add(post as Post);
-                }
-                catch (InvalidCastException)
-                {
-                    throw new NotImplementedException();
-                }
+               
+                    postContext.Posts.Add(post);
+                 postContext.SaveChanges();
+                
+
+            }
+        }
+
+        public IList<Comment> GetComments(int post_id)
+        {
+            using (ForumContext postContext = new ForumContext())
+            {
+               return  postContext.Comments.Where(p => p.PostID == post_id).ToList();
+
 
             }
         }
         
         //Add comments into Comment List
-        public void AddComments(Comment comment, int postID)
+        /*public void AddComments(Comment comment, int postID)
         {
             using (ForumContext postcontext = new ForumContext())
             {
@@ -103,6 +109,8 @@ namespace ForumDAL.Repositories
                 postcontext.SaveChanges();
 
             }
-        }
+
+
+        }*/
     }
 }
