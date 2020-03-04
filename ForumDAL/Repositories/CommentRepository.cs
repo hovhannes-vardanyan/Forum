@@ -38,7 +38,7 @@ namespace ForumDAL.Repositories
             {
                 Comment newComment = msg;
                 // Finding Old Comment
-                var oldComment = GetCommentById(CommentID);
+                var oldComment = GetCommentById(commentID);
                 // Updating Old Comment
                 oldComment.Title = newComment.Title;
                 oldComment.Description = newComment.Description;

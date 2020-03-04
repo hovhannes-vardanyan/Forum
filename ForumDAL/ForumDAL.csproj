@@ -55,15 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IMessage.cs" />
-    <Compile Include="Migrations\202003021505589_First.cs" />
-    <Compile Include="Migrations\202003021505589_First.designer.cs">
-      <DependentUpon>202003021505589_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003031409467_Sasdsadsad.cs" />
-    <Compile Include="Migrations\202003031409467_Sasdsadsad.designer.cs">
-      <DependentUpon>202003031409467_Sasdsadsad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Interface\ITopic.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Post.cs" />
@@ -81,14 +73,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003021505589_First.resx">
-      <DependentUpon>202003021505589_First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003031409467_Sasdsadsad.resx">
-      <DependentUpon>202003031409467_Sasdsadsad.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

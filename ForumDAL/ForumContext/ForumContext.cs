@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using ForumDAL.Models.Topics;
 
 namespace ForumDAL
 {
@@ -16,5 +17,7 @@ namespace ForumDAL
         public DbSet<User> usersData { get; set; } // using to save our users in Db
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<SubTopic> subTopics{ get; set; }
     }
 }
