@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Models.Topics
 {
-    class MainTopic : ITopic<SubTopic>
+  public  class MainTopic
     {
         public string TopicName { get; set; }
         public int TopicId { get; set; }
-        List<SubTopic> subTopics = new List<SubTopic>();
+        public ICollection<SubTopic> subtopics { get; set; }
 
         public MainTopic()
         {
@@ -21,18 +21,6 @@ namespace ForumDAL.Models.Topics
         {
             this.TopicName = name;
             this.TopicId = Id;
-        }
-
-
-
-        public void AddTopic(SubTopic adder)
-        {
-            subTopics.Add(adder);
-        }
-
-        public void RemoveTopic(SubTopic remover)
-        {
-            subTopics.Remove(remover);
         }
     }
 }
