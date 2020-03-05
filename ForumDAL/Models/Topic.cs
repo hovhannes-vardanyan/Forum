@@ -5,7 +5,10 @@ using System.Web;
 
 namespace ForumDAL
 {
-    public class Topic
+    public  abstract class Topic
     {
+        public int SubtopicID { get; set; }
+
+        public int MaintopicID { get; set; }
     }
 }
