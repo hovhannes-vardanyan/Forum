@@ -18,6 +18,10 @@ namespace ForumDAL
             this.Description = description;
 
         }
+        public Post()
+        {
+
+        }
 
        
 

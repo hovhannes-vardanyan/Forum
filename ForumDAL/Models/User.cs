@@ -23,6 +23,8 @@ namespace ForumDAL
 
         public string UserPassword { get; set; }
         
+        public ICollection<Post> Posts { get; set; }
+
         
         public User()
         {

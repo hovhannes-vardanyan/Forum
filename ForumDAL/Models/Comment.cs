@@ -7,7 +7,7 @@ namespace ForumDAL
 {
     public class Comment : Message
     {
-        public int CommentID { get; }
+        public int CommentID { get; set; }
         public string Description { get; set; }
 
         public Comment(int commentID, string title, int userID, int postID, string description) : base(title, userID)

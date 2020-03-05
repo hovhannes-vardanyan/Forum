@@ -34,7 +34,11 @@ namespace ForumDAL.Repositories
             return user;
 
         }
-        
+        public IList<Post> GetPosts(int user_id)
+        {
+            return context.Posts.Where(u => u.UserID == user_id).ToList();  
+            
+        }
 
     }
 }

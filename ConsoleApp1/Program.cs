@@ -14,18 +14,32 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             PostRepository postRepository = new PostRepository();
+            UserRepository repository = new UserRepository();
 
-            postRepository.Publish(new Post(14,"Hello World",7,"Sdsadasd"));
-
-            postRepository.AddComments(new Comment("comm",7),1);
-
-            var comments = postRepository.GetComments(1);
-
-            foreach (var item in comments)
+            Comment comment1 = new Comment()
             {
-                Console.WriteLine($"{item.Title} ");
+                Title = "Hi",
+                UserID = 8,
+            };
+            postRepository.AddComments(comment1, 2);
+            foreach (var item in repository.GetPosts(7))
+            {
                 
+                Console.WriteLine(item.Title);
+                Console.WriteLine(item.Description);
+                Console.WriteLine("Comments");
+                foreach (var comment in postRepository.GetComments(item.PostID))
+                {
+                    User user = repository.GetById(comment.UserID);
+                    Console.WriteLine("\t"+user.UserName+" "+user.UserSurname );
+                    Console.WriteLine($"\t{comment.Title}");
+                }
+                Console.WriteLine();
             }
+
+            //postRepository.AddComments(new Comment("comm",7),1);
+
+            
 
         }
     }
