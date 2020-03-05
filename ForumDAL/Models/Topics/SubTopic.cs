@@ -1,4 +1,4 @@
-﻿using ForumDAL.Interface;
+﻿using ForumDAL;
 using System;
 using System.Collections.Generic;
 

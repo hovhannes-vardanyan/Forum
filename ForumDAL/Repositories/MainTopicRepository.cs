@@ -14,7 +14,7 @@ namespace ForumDAL.Repositories
 
         public MainTopic GetMainTopic(int topicID)
         {
-            var mainTopic = maintopicContext.Topics.Where(maintopic => maintopic.TopicId == topicID).FirstOrDefault();
+            var mainTopic = maintopicContext.Topics.Where(maintopic => maintopic.MainTopicId == topicID).FirstOrDefault();
             return mainTopic;
         }
 

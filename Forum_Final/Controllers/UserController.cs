@@ -74,6 +74,8 @@ namespace Forum_Final.Controllers
                 {
                     User user = UserRepository.GetById((int)id);
                     ViewBag.Id = loggedInId;
+                    
+                    ViewBag.Posts = UserRepository.GetPosts(loggedInId);
                     return View(user);
                 }
                 else
