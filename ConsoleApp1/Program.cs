@@ -20,23 +20,33 @@ namespace ConsoleApp1
             {
                 Title = "My First Post",
                 Description = "SDasdds",
-                UserID = 7
+                UserID = 1
 
 
             };
-
-            unitOfWork.PostRepository.Publish(post,2);
-            unitOfWork.SubTopicRepository.GetPosts(7);
-
-             //Adding comment
-            /*Comment comment = new Comment() 
+            
+           Comment comment = new Comment() 
             {
                 UserID =1,
                 Title = "First Comment",
 
             };
             unitOfWork.PostRepository.AddComments(comment,1);
-            */
+            
+            //unitOfWork.PostRepository.Publish(post,1);
+
+            foreach (var item in unitOfWork.SubTopicRepository.GetPosts(1))
+            {
+                Console.WriteLine(item.Title);
+                Console.WriteLine(item.Description);
+                foreach (var comment1 in unitOfWork.PostRepository.GetComments(item.PostID))
+                {
+                    Console.WriteLine(comment1.Title);
+                }
+            }
+           
+
+             
 
             //Geting Posts
             //foreach (var post in unitOfWork.UserRepository.GetPosts(1))

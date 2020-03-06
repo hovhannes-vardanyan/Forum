@@ -55,9 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IMessage.cs" />
-    <Compile Include="Migrations\202003061421526_forumDb.cs" />
-    <Compile Include="Migrations\202003061421526_forumDb.designer.cs">
-      <DependentUpon>202003061421526_forumDb.cs</DependentUpon>
+    <Compile Include="Migrations\202003061427311_Myf.cs" />
+    <Compile Include="Migrations\202003061427311_Myf.designer.cs">
+      <DependentUpon>202003061427311_Myf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -82,8 +82,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003061421526_forumDb.resx">
-      <DependentUpon>202003061421526_forumDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003061427311_Myf.resx">
+      <DependentUpon>202003061427311_Myf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
