@@ -29,8 +29,9 @@ namespace ForumDAL.Repositories
             }
         }
         // Publish
-        public void Publish(Comment comment)
+        public void Publish(Comment comment, int postId)
         {
+            comment.PostID = postId;
             context.Comments.Add(comment);
             context.SaveChanges();
 

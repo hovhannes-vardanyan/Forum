@@ -7,13 +7,13 @@ namespace ForumDAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class forumDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(forumDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003061148351_Initial"; }
+            get { return "202003061421526_forumDb"; }
         }
         
         string IMigrationMetadata.Source

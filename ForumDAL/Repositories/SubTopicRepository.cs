@@ -20,13 +20,13 @@ namespace ForumDAL.Repositories
             return subtopic;
         }
 
-        
 
 
-        //public IList<Post> GetPosts (int SubtopicId)
-        //{
-        //    return subtopicContext.Posts.Where(subtopic => subtopic.SubtopicID == SubtopicId).ToList();
-        //}
+
+        public IList<Post> GetPosts(int SubtopicId)
+        {
+            return context.Posts.Where(subtopic => subtopic.SubtopicID == SubtopicId).ToList();
+        }
 
         //public void AddPosts(Post post, int SubtopicID)
         //{

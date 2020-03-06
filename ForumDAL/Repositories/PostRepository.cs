@@ -76,8 +76,9 @@ namespace ForumDAL.Repositories
 
 
         }
-        public void Publish(Post post)
+        public void Publish(Post post,int SubtopicID)
         {
+            post.SubtopicID = SubtopicID;
             context.Posts.Add(post);
             context.SaveChanges();
 
@@ -94,7 +95,7 @@ namespace ForumDAL.Repositories
             comment.PostID = postID;
 
             context.Comments.Add(comment);
-                context.SaveChanges();
+            context.SaveChanges();
 
         }
     }

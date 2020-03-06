@@ -16,16 +16,17 @@ namespace ConsoleApp1
 
             UnitOfWork unitOfWork = new UnitOfWork(new ForumContext());
             //Publishing Post
-            /* Post post = new Post()
-             {
-                 Title = "My First Post",
-                 Description = "SDasdds",
-                 UserID = 1
+            Post post = new Post()
+            {
+                Title = "My First Post",
+                Description = "SDasdds",
+                UserID = 7
 
 
-             };
-             unitOfWork.PostRepository.Publish(post);
-             */
+            };
+
+            unitOfWork.PostRepository.Publish(post,2);
+            unitOfWork.SubTopicRepository.GetPosts(7);
 
              //Adding comment
             /*Comment comment = new Comment() 
@@ -38,15 +39,15 @@ namespace ConsoleApp1
             */
 
             //Geting Posts
-            foreach (var post in unitOfWork.UserRepository.GetPosts(1))
-            {
-                Console.WriteLine(post.Title);
-                Console.WriteLine(post.Description);
-                foreach (var comment in unitOfWork.PostRepository.GetComments(post.PostID))
-                {
-                    Console.WriteLine("\t"+comment.Title);
-                }
-            }
+            //foreach (var post in unitOfWork.UserRepository.GetPosts(1))
+            //{
+            //    Console.WriteLine(post.Title);
+            //    Console.WriteLine(post.Description);
+            //    foreach (var comment in unitOfWork.PostRepository.GetComments(post.PostID))
+            //    {
+            //        Console.WriteLine("\t"+comment.Title);
+            //    }
+            //}
 
 
 

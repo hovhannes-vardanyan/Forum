@@ -10,9 +10,10 @@ namespace ForumDAL
         public int PostID { get; set; }
         public string Title { get; set; }
         public int UserID { get; set; }
-        //public int SubtopicID { get; set; }
 
-        //public int MaintopicID { get; set; }
+        public int SubtopicID { get; set; }
+
+        public int MaintopicID { get; set; }
 
 
         public DateTime DateTime { get => DateTime.Now; set { } }

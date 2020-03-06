@@ -8,7 +8,7 @@ namespace ForumDAL
 {
     public interface IMessage<T> 
     {
-         void Publish (T msg);
+         void Publish (T msg, int Id);
 
         //Find Msg By id and Delete
          void Delete(int id);
