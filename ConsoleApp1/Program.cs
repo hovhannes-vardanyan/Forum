@@ -13,41 +13,43 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            PostRepository postRepository = new PostRepository();
-            UserRepository repository = new UserRepository();
 
-            Post post = new Post()
+            UnitOfWork unitOfWork = new UnitOfWork(new ForumContext());
+            //Publishing Post
+            /* Post post = new Post()
+             {
+                 Title = "My First Post",
+                 Description = "SDasdds",
+                 UserID = 1
+
+
+             };
+             unitOfWork.PostRepository.Publish(post);
+             */
+
+             //Adding comment
+            /*Comment comment = new Comment() 
             {
-                Title = "First Post",
-                Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                UserID = 1,
+                UserID =1,
+                Title = "First Comment",
 
             };
-            //postRepository.Publish(post);  
-            Comment comment1 = new Comment()
+            unitOfWork.PostRepository.AddComments(comment,1);
+            */
+
+            //Geting Posts
+            foreach (var post in unitOfWork.UserRepository.GetPosts(1))
             {
-                Title = "Hi",
-                UserID = 1,
-            };
-           postRepository.AddComments(comment1, 1);
-            foreach (var item in repository.GetPosts(1))
-            {
-                
-                Console.WriteLine(item.Title);
-                Console.WriteLine(item.Description);
-                Console.WriteLine("Comments");
-                foreach (var comment in postRepository.GetComments(item.PostID))
+                Console.WriteLine(post.Title);
+                Console.WriteLine(post.Description);
+                foreach (var comment in unitOfWork.PostRepository.GetComments(post.PostID))
                 {
-                    User user = repository.GetById(comment.UserID);
-                    Console.WriteLine("\t"+user.UserName+" "+user.UserSurname );
-                    Console.WriteLine($"\t{comment.Title}");
+                    Console.WriteLine("\t"+comment.Title);
                 }
-                Console.WriteLine();
             }
 
-            //postRepository.AddComments(new Comment("comm",7),1);
-           
-            
+
+
 
         }
     }

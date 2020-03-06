@@ -10,13 +10,17 @@ namespace ForumDAL.Repositories
 {
     public class PostRepository : IMessage<Post>
     {
-        ForumContext postContext = new ForumContext();
+        ForumContext context;
+        public PostRepository(ForumContext context)
+        {
+            this.context = context;
+        }
         public Post GetPostById(int PostID)
         {
 
             try
             {
-                var post = postContext.Posts.Where(p => p.PostID == PostID).First();
+                var post = context.Posts.Where(p => p.PostID == PostID).First();
                 return post;
             }
             catch (InvalidOperationException)
@@ -37,13 +41,13 @@ namespace ForumDAL.Repositories
 
             try
             {
-                postContext.Posts.Remove(GetPostById(postID));
+                context.Posts.Remove(GetPostById(postID));
             }
             catch (Exception)
             {
                 throw new NotImplementedException();
             }
-            postContext.SaveChanges();
+            context.SaveChanges();
 
         }
         //Edit Post
@@ -68,19 +72,19 @@ namespace ForumDAL.Repositories
             {
                 throw new NotImplementedException();
             }
-            postContext.SaveChanges();
+            context.SaveChanges();
 
 
         }
         public void Publish(Post post)
         {
-            postContext.Posts.Add(post);
-            postContext.SaveChanges();
+            context.Posts.Add(post);
+            context.SaveChanges();
 
         }
         public IList<Comment> GetComments(int post_id)
         {
-            return postContext.Comments.Where(p => p.PostID == post_id).ToList();
+            return context.Comments.Where(p => p.PostID == post_id).ToList();
         }
 
         //Add comments into Comment List
@@ -89,8 +93,8 @@ namespace ForumDAL.Repositories
 
             comment.PostID = postID;
 
-            postContext.Comments.Add(comment);
-                postContext.SaveChanges();
+            context.Comments.Add(comment);
+                context.SaveChanges();
 
         }
     }

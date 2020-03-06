@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Repositories
 {
-    class MainTopicRepository
+    public class MainTopicRepository
     {
-        ForumContext maintopicContext = new ForumContext();
+        ForumContext context;
+        public MainTopicRepository(ForumContext context)
+        {
+            this.context = context;
+        }
       
 
         public MainTopic GetMainTopic(int topicID)
         {
-            var mainTopic = maintopicContext.Topics.Where(maintopic => maintopic.MainTopicId == topicID).FirstOrDefault();
+            var mainTopic = context.Topics.Where(maintopic => maintopic.MainTopicId == topicID).FirstOrDefault();
             return mainTopic;
         }
 
@@ -27,8 +31,8 @@ namespace ForumDAL.Repositories
         public void AddSubtopic(SubTopic subTopic, int topicID)
         {
             subTopic.SubTopicID = topicID;
-            maintopicContext.subTopics.Add(subTopic);
-            maintopicContext.SaveChanges();
+            context.subTopics.Add(subTopic);
+            context.SaveChanges();
         }
     }
 }

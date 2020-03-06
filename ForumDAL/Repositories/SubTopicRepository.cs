@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Repositories
 {
-    class SubTopicRepository
+    public class SubTopicRepository
     {
-        ForumContext subtopicContext = new ForumContext();
-
+        ForumContext context;
+        public SubTopicRepository(ForumContext context)
+        {
+            this.context = context;
+        }
         public SubTopic  GetSubtopicById(int subtopicId)
         {
-            var subtopic = subtopicContext.subTopics.Where(subtopic => subtopic.SubTopicID == subtopicId).First();
+            var subtopic = context.subTopics.Where(subtopic => subtopic.SubTopicID == subtopicId).First();
             return subtopic;
         }
 
@@ -37,8 +40,8 @@ namespace ForumDAL.Repositories
         public void DeleteSubtopic(int subtopicID)
         {
 
-            subtopicContext.subTopics.Remove(GetSubtopicById(subtopicID));
-            subtopicContext.SaveChanges();
+            context.subTopics.Remove(GetSubtopicById(subtopicID));
+            context.SaveChanges();
         }
     }
 }

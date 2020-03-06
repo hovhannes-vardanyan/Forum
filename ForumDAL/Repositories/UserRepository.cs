@@ -9,9 +9,10 @@ namespace ForumDAL.Repositories
   public class UserRepository
     {
         ForumContext context;
-        public UserRepository()
+        public UserRepository(ForumContext context)
         {
-            context = new ForumContext();
+            this.context = context;
+
         }
 
         public void AddUser(User user)

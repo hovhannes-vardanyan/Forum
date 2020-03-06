@@ -9,14 +9,18 @@ using System.Threading.Tasks;
 namespace ForumDAL.Repositories
 {
 
-    class CommentRepository : IMessage<Comment>
+  public  class CommentRepository : IMessage<Comment>
     {
-        ForumContext commentContext = new ForumContext();
+        ForumContext context;
+        public CommentRepository(ForumContext context)
+        {
+            this.context = context;
+        }
         public Comment GetCommentById(int CommentID)
         {
             try
             {
-                var comment = commentContext.Comments.Where(c => c.CommentID == CommentID).First();
+                var comment = context.Comments.Where(c => c.CommentID == CommentID).First();
                 return comment;
             }
             catch (InvalidOperationException)
@@ -27,8 +31,8 @@ namespace ForumDAL.Repositories
         // Publish
         public void Publish(Comment comment)
         {
-            commentContext.Comments.Add(comment);
-            commentContext.SaveChanges();
+            context.Comments.Add(comment);
+            context.SaveChanges();
 
         }
         // Edit Comment
@@ -48,20 +52,20 @@ namespace ForumDAL.Repositories
             {
                 throw new NotImplementedException();
             }
-            commentContext.SaveChanges();
+            context.SaveChanges();
         }
         // Remove Comment      
         public void Delete(int commentID)
         {
             try
             {
-                commentContext.Comments.Remove(GetCommentById(commentID));
+                context.Comments.Remove(GetCommentById(commentID));
             }
             catch (Exception)
             {
                 throw new NotImplementedException();
             }
-            commentContext.SaveChanges();
+            context.SaveChanges();
         }
     }
 }

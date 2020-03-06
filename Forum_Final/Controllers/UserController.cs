@@ -10,7 +10,7 @@ namespace Forum_Final.Controllers
 {
     public class UserController : Controller
     {
-        UserRepository UserRepository = new UserRepository();
+        UnitOfWork unitOfWork = new UnitOfWork(new ForumContext());
         public ActionResult Register()
         {
             return View();
@@ -23,7 +23,7 @@ namespace Forum_Final.Controllers
 
             if (ModelState.IsValid)
             {
-                UserRepository.AddUser(user);
+                unitOfWork.UserRepository.AddUser(user);
                 return RedirectToAction("Register");
 
             }
@@ -43,7 +43,7 @@ namespace Forum_Final.Controllers
 
             if (ModelState.IsValid)
             {
-                User signed_user = UserRepository.SignIn(user.UserLogin, user.UserPassword);
+                User signed_user = unitOfWork.UserRepository.SignIn(user.UserLogin, user.UserPassword);
 
                
 
@@ -72,10 +72,10 @@ namespace Forum_Final.Controllers
 
                 if (id == loggedInId)
                 {
-                    User user = UserRepository.GetById((int)id);
+                    User user = unitOfWork.UserRepository.GetById((int)id);
                     ViewBag.Id = loggedInId;
                     
-                    ViewBag.Posts = UserRepository.GetPosts(loggedInId);
+                    ViewBag.Posts = unitOfWork.UserRepository.GetPosts(loggedInId);
                     return View(user);
                 }
                 else
