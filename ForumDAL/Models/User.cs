@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForumDAL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace ForumDAL
         
         public ICollection<Post> Posts { get; set; }
 
+        public List<Notification> Notifications { get; set; }
         
         public User()
         {
@@ -39,5 +41,7 @@ namespace ForumDAL
             this.UserPassword = password;
             this.UserId = id;
         }
+
+
     }
 }

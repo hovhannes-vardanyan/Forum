@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForumDAL.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,10 +94,24 @@ namespace ForumDAL.Repositories
         {
 
             comment.PostID = postID;
+            var post = context.Posts.Where(p => p.PostID ==postID).First();
+            var user_get = context.usersData.Where(u=>u.UserId ==post.UserID).First();
+            var user_send = context.usersData.Where(u=>u.UserId ==post.UserID).First();
 
+            Notification notification = new Notification()
+            {
+                Message = $"New Comment from {user_send.UserName} in {post.Title} ",
+                Post_Id = postID,
+                User_Id = user_get.UserId
+
+            };
+            context.Notifications.Add(notification);
+           
             context.Comments.Add(comment);
             context.SaveChanges();
 
         }
+
+
     }
 }

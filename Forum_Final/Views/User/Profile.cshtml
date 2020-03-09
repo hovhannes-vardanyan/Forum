@@ -3,7 +3,8 @@
 @model ForumDAL.User
 @{
     ViewBag.Title = "Profile";
-   
+        Layout = "~/Views/Shared/Account_Menu.cshtml";
+
 
 
 }
@@ -11,17 +12,21 @@
 <h2>Profile</h2>
 
 
+
 @Model.UserName   @Model.UserSurname
+
+@Html.ActionLink("Sign out", "SignOut", "User")
+
 <div class="row">
     <div class="col-md-4">
         @Html.Partial("Topics")
-           
-           
-           
+
+
+
 
     </div>
-   }
-    
+
+
     <div class="col-md-8">
         <div class="panel panel-info">
             <div class="panel-heading">My Posts</div>
@@ -39,9 +44,9 @@
                             <input type="type" name="name" value="" />
                         </form>
 
-
                     </div>
                 </div>
             </div>
         </div>
-</div>
+    </div>
+    </div>

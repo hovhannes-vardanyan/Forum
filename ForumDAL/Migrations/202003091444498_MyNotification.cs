@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Myf : DbMigration
+    public partial class MyNotification : DbMigration
     {
         public override void Up()
         {
@@ -72,21 +72,38 @@
                         UserSurname = c.String(),
                         UserLogin = c.String(),
                         UserPassword = c.String(),
+                        Notification_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.UserId);
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.Notifications", t => t.Notification_Id)
+                .Index(t => t.Notification_Id);
+            
+            CreateTable(
+                "dbo.Notifications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Post_Id = c.Int(nullable: false),
+                        Message = c.String(),
+                        User_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Posts", "UserID", "dbo.Users");
+            DropForeignKey("dbo.Users", "Notification_Id", "dbo.Notifications");
             DropForeignKey("dbo.SubTopics", "MainTopic_MainTopicId", "dbo.MainTopics");
             DropForeignKey("dbo.Posts", "SubtopicID", "dbo.SubTopics");
             DropForeignKey("dbo.Comments", "PostID", "dbo.Posts");
+            DropIndex("dbo.Users", new[] { "Notification_Id" });
             DropIndex("dbo.SubTopics", new[] { "MainTopic_MainTopicId" });
             DropIndex("dbo.Posts", new[] { "SubtopicID" });
             DropIndex("dbo.Posts", new[] { "UserID" });
             DropIndex("dbo.Comments", new[] { "PostID" });
+            DropTable("dbo.Notifications");
             DropTable("dbo.Users");
             DropTable("dbo.MainTopics");
             DropTable("dbo.SubTopics");

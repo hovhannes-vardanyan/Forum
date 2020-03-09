@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using ForumDAL.Models;
 using ForumDAL.Models.Topics;
 
 namespace ForumDAL
@@ -21,5 +22,6 @@ namespace ForumDAL
         public DbSet<MainTopic> Topics{ get; set; }
 
         public DbSet<SubTopic> subTopics{ get; set; }
+        public DbSet<Notification> Notifications{ get; set; }
     }
 }

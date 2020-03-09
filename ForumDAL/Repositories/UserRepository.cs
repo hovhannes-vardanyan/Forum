@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForumDAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,11 @@ namespace ForumDAL.Repositories
         {
             return context.Posts.Where(u => u.UserID == user_id).ToList();  
             
+        }
+
+        public  List<Notification> ShowNotification(int user_id)
+        {
+            return context.Notifications.Where(n => n.User_Id == user_id).ToList();
         }
 
     }

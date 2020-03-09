@@ -55,13 +55,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IMessage.cs" />
-    <Compile Include="Migrations\202003061427311_Myf.cs" />
-    <Compile Include="Migrations\202003061427311_Myf.designer.cs">
-      <DependentUpon>202003061427311_Myf.cs</DependentUpon>
+    <Compile Include="Migrations\202003091444498_MyNotification.cs" />
+    <Compile Include="Migrations\202003091444498_MyNotification.designer.cs">
+      <DependentUpon>202003091444498_MyNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003091446461_MyForumas.cs" />
+    <Compile Include="Migrations\202003091446461_MyForumas.designer.cs">
+      <DependentUpon>202003091446461_MyForumas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\Topics\AbstractTopic.cs" />
@@ -82,8 +87,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003061427311_Myf.resx">
-      <DependentUpon>202003061427311_Myf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003091444498_MyNotification.resx">
+      <DependentUpon>202003091444498_MyNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091446461_MyForumas.resx">
+      <DependentUpon>202003091446461_MyForumas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

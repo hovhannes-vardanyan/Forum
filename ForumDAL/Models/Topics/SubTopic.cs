@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace ForumDAL.Models.Topics
 {
-  public   class SubTopic
+    public class SubTopic
     {
-      
         public int SubTopicID { get; set; }
-
         public string SubtopicName { get; set; }
         public ICollection<Post> posts { get; set; }
 
