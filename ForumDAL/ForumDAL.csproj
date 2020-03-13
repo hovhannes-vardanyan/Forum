@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202003091446461_MyForumas.designer.cs">
       <DependentUpon>202003091446461_MyForumas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003131702167_first.cs" />
+    <Compile Include="Migrations\202003131702167_first.designer.cs">
+      <DependentUpon>202003131702167_first.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Message.cs" />
@@ -78,6 +82,7 @@
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\MainTopicRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Repositories\SearchRepository.cs" />
     <Compile Include="Repositories\SubTopicRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -92,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003091446461_MyForumas.resx">
       <DependentUpon>202003091446461_MyForumas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003131702167_first.resx">
+      <DependentUpon>202003131702167_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

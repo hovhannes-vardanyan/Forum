@@ -19,7 +19,11 @@ namespace ForumDAL.Repositories
             var subtopic = context.subTopics.Where(subtopic => subtopic.SubTopicID == subtopicId).First();
             return subtopic;
         }
-
+        public void AddSubtopics(SubTopic subTopic)
+        {
+            context.subTopics.Add(subTopic);
+            context.SaveChanges();
+        }
 
 
 

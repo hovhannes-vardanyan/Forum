@@ -14,9 +14,21 @@ namespace ForumDAL.Repositories
         MainTopicRepository mainTopicRepository;
         SubTopicRepository subTopicRepository;
         ForumContext context;
+        SearchRepository searchRepository;
         public UnitOfWork(ForumContext context)
         {
             this.context =context;
+        }
+        public SearchRepository SearchRepository
+        {
+            get
+            {
+                if (searchRepository == null)
+                {
+                    searchRepository = new SearchRepository(context);
+                }
+                return searchRepository;
+            }
         }
         public CommentRepository CommentRepository 
         { 
