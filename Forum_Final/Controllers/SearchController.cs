@@ -20,19 +20,18 @@ namespace Forum_Final.Controllers
 
 
         [HttpPost]
-        public ActionResult Search(string searchString)
+        public ActionResult Search([Frombody]string searchString)
         {
 
-            ViewBag.SearchString = searchString;
-            return RedirectToAction("SearchResultPage");
+            return RedirectToAction("SearchResultPage",new {searchString_get = searchString });
 
         }
 
 
         [HttpGet]
-        public ActionResult SearchResultPage()
+        public ActionResult SearchResultPage(string searchString)
         {
-            ViewBag.Result = unitOfWork.SearchRepository.Search(ViewBag.SearchString);
+            ViewBag.Result = unitOfWork.SearchRepository.Search(searchString);
             return View();
         }
     }
