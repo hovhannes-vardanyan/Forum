@@ -1,3 +1,9 @@
 ﻿@{
+    if (Request.Cookies.Get("ID")==null)
+    {
+        HttpCookie cookie = new HttpCookie("ID");
+        cookie.Value = "0";
+        Response.Cookies.Add(cookie);
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }

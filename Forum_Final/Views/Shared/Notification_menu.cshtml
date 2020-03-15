@@ -1,0 +1,45 @@
+﻿@using ForumDAL.Models
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Forum", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" style="float:right">
+                <li>@Html.ActionLink("My Account", "Profile", "User")</li>
+
+                <li>
+                    <a href="#">
+                        Notifications
+                        <span id="notification">
+                            @{List<Notification> notifications = ViewBag.Notifications; }
+                            @if (notifications.Count > 0)
+                            {
+                                <span id="number" style="border-radius:50%;border:1px solid #000;background:red;color:white;padding:0px 5px;">
+
+                                    @notifications.Count
+
+
+
+
+                                </span>
+                            }
+                        </span>
+                    </a>
+
+
+                </li>
+
+                <li>@Html.ActionLink("Sign Out", "SignOut", "User")</li>
+            </ul>
+        </div>
+    </div>
+</div>

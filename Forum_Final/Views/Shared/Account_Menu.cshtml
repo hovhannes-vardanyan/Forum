@@ -1,4 +1,4 @@
-﻿
+﻿@using ForumDAL.Models
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -22,11 +23,29 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="float:right">
-                    <li>@Html.ActionLink("My Account", "Profile", "User")</li>
+                    <li>
+                       @Html.ActionLink($"{ViewBag.FullName}", "Profile", "User",new { id =ViewBag.Id },null);
+                    </li>
 
-                    <li>@Html.ActionLink("Notifications", "Profile", "User")</li>
-                   
-                    <li>@Html.ActionLink("Sign Out", "SignOut", "User")</li>
+                    <li>
+                        @Html.ActionLink("Notifications", "Notifications", "User",new { area = "" }, new { @class = "notifications" })
+                        @{
+                            List<Notification> notifications = ViewBag.Notifications;
+                           
+                            <span id="not_number">@Html.Partial("Notification",notifications)</span>
+                        }
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Settings   <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li> @Html.ActionLink("Edit your details", "Edit")</li>
+                            <li> @Html.ActionLink("Delete Account", "Edit")</li>
+                            <li>@Html.ActionLink("Sign Out", "SignOut", "User")</li>
+                    
+                        </ul>
+                    </li>                      
                 </ul>
             </div>
         </div>
@@ -44,3 +63,8 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+    window.setInterval(function () {
+        $("#not_number").load("@Url.Action("Notification","User")");
+    }, 5000);
+</script>

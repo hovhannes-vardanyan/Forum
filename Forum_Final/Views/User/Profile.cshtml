@@ -12,11 +12,6 @@
 <h2>Profile</h2>
 
 
-
-@Model.UserName   @Model.UserSurname
-
-@Html.ActionLink("Sign out", "SignOut", "User")
-
 <div class="row">
     <div class="col-md-4">
         @Html.Partial("Topics")
@@ -41,7 +36,7 @@
 
                         <form action="/" method="post">
                             Add Comment
-                            <input type="type" name="name" value="" />
+                            <input type="text" name="name" value="" />
                         </form>
 
                     </div>
