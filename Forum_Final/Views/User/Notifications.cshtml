@@ -1,0 +1,18 @@
+﻿@model List<ForumDAL.Models.Notification>
+@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Views/Shared/Account_Menu.cshtml";
+}
+
+
+<h2>Notifications</h2>
+<div class="panel">
+    <div class="panel-body">
+         <ul class="list-group">
+        @foreach (var notification in Model)
+        {
+            <li class="list-group-item"><a href="#">@notification.Message</a></li>
+        }
+    </ul>
+    </div>
+</div>

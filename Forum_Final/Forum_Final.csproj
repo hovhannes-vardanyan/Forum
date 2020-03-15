@@ -201,7 +201,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,7 +239,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -250,8 +249,9 @@
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\Topics.cshtml" />
     <Content Include="Views\Shared\Account_Menu.cshtml" />
-    <Content Include="Views\Search\Search.cshtml" />
-    <Content Include="Views\Search\SearchResultPage.cshtml" />
+    <Content Include="Views\User\Notifications.cshtml" />
+    <Content Include="Views\User\Notification.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

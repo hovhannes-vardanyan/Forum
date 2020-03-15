@@ -10,7 +10,27 @@ namespace Forum_Final.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            try
+            {
+                HttpCookie cookie = Request.Cookies.Get("ID");
+                int loggedInId = Convert.ToInt32(cookie.Value);
+                if (loggedInId !=0)
+                {
+                    return RedirectToAction("Profile", "User",new {id = loggedInId });
+                }
+                else
+                {
+                    return View();
+
+                }
+            }
+            catch (Exception)
+            {
+                return View();
+
+
+            }
         }
 
         public ActionResult About()
@@ -26,6 +46,10 @@ namespace Forum_Final.Controllers
 
             return View();
         }
+        public ActionResult Error()
+        {
+            return View();
+        }     
         public ActionResult Post()
         {
             return View();

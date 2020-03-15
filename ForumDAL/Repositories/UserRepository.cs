@@ -18,6 +18,13 @@ namespace ForumDAL.Repositories
 
         public void AddUser(User user)
         {
+            foreach (var users in context.usersData.ToList())
+            {
+                if (users.UserLogin == user.UserLogin)
+                {
+                    throw new Exception();
+                }
+            }
             context.usersData.Add(user);
 
             context.SaveChanges();
@@ -30,10 +37,29 @@ namespace ForumDAL.Repositories
 
 
         }
+        public void Edit(User user,int id)
+        {
+           User user1 = context.usersData.Where(m => m.UserId == id).FirstOrDefault();
+            user1.UserName = user.UserName;
+            user1.UserSurname = user.UserSurname;
+            user1.UserLogin = user.UserLogin;
+            user1.UserPassword = user.UserPassword;
+            context.SaveChanges();
+            
+        }
         public User SignIn(string username, string password)
         {
+
             var user = context.usersData.Where(u => u.UserLogin == username && u.UserPassword == password).FirstOrDefault();
-            return user;
+            if (user !=null)
+            {
+                return user;
+
+            }
+            else
+            {
+                throw  new NullReferenceException();
+            }
 
         }
         public IList<Post> GetPosts(int user_id)
@@ -44,7 +70,7 @@ namespace ForumDAL.Repositories
 
         public  List<Notification> ShowNotification(int user_id)
         {
-            return context.Notifications.Where(n => n.User_Id == user_id).ToList();
+            return context.Notifications.Where(n => n.UserId == user_id).ToList();
         }
 
     }

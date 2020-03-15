@@ -102,7 +102,7 @@ namespace ForumDAL.Repositories
             {
                 Message = $"New Comment from {user_send.UserName} in {post.Title} ",
                 Post_Id = postID,
-                User_Id = user_get.UserId
+                UserId = user_get.UserId
 
             };
             context.Notifications.Add(notification);

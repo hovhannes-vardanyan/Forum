@@ -12,16 +12,21 @@ namespace ForumDAL
         [Key]
         public int UserId { get; set; } // unique user Id
 
+       
         //Display is need for showing property names for UI
         [Display(Name ="First Name")]
         public string UserName { get;  set; }
         [Display(Name = "Last Name")]
+      
 
         public string UserSurname { get; set; }
         [Display(Name = "Username")]
-       public string UserLogin { get; set; }
-        [Display(Name = "Password")]
+        [Required(ErrorMessage ="Enter username")]
 
+        public string UserLogin { get; set; }
+        [Display(Name = "Password")]
+        [Required(ErrorMessage ="Enter the password")]
+        
         public string UserPassword { get; set; }
         
         public ICollection<Post> Posts { get; set; }
