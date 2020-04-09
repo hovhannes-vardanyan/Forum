@@ -1,6 +1,6 @@
 ﻿@model ForumDAL.User
 @{ 
-    Layout = "~/Views/Shared/Account_Menu.cshtml";
+
 }
 @using (Html.BeginForm())
 {
@@ -53,5 +53,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Profile", "Profile",new {id = Model.UserId},null)
+    @Html.ActionLink("Back to Profile", "Index")
 </div>

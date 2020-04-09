@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ForumDAL.Models;
+using Forum_Final.ViewModels;
 
 namespace Forum_Final.Controllers
 {
@@ -14,7 +15,14 @@ namespace Forum_Final.Controllers
         UnitOfWork unitOfWork = new UnitOfWork(new ForumContext());
         public ActionResult Register()
         {
-            return View();
+            if (Session["FullName"] == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -40,7 +48,14 @@ namespace Forum_Final.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            if (Session["FullName"] == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -53,7 +68,8 @@ namespace Forum_Final.Controllers
                 {
                     User signed_user = unitOfWork.UserRepository.SignIn(user.UserLogin, user.UserPassword);
                     Response.Cookies["ID"].Value = $"{ signed_user.UserId}";
-                    return RedirectToAction("Profile", new { id = signed_user.UserId });
+                    
+                    return RedirectToAction("Index");
                 }
                 catch (Exception)
                 {
@@ -65,20 +81,19 @@ namespace Forum_Final.Controllers
         }
         
         [HttpGet]
-        public ActionResult Profile(int? id)
+        public ActionResult Index()
         {
-            try
+            if (Request.Cookies["ID"].Value != "0")
             {
                 HttpCookie cookie = Request.Cookies.Get("ID");
                 int loggedInId = Convert.ToInt32(cookie.Value);
-                User user = unitOfWork.UserRepository.GetById((int)id);
-                ViewBag.Id = loggedInId;
-                ViewBag.FullName = user.UserName + " " + user.UserSurname;
-                ViewBag.Posts = unitOfWork.UserRepository.GetPosts(loggedInId);
-                ViewBag.Notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
-                return View(user);
+                User user = unitOfWork.UserRepository.GetById(loggedInId);
+                Session["Id"] = user.UserId;
+                Session["FullName"] = user.UserName + " " + user.UserSurname;
+                Session["Notifications"] = unitOfWork.UserRepository.ShowNotification(loggedInId);
+                return View("Profile",user);
             }
-            catch (Exception)
+            else
             {
                 return RedirectToAction("Login");
             }
@@ -87,29 +102,45 @@ namespace Forum_Final.Controllers
 
         public ActionResult Notification() 
         {
-            HttpCookie cookie = Request.Cookies.Get("ID");
-            int loggedInId = Convert.ToInt32(cookie.Value);
-            List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
-            return View(notifications);
+            if (Session["FullName"] != null)
+            {
+                HttpCookie cookie = Request.Cookies.Get("ID");
+                int loggedInId = Convert.ToInt32(cookie.Value);
+                List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
+                return View(notifications);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         public ActionResult Notifications()
         {
-            HttpCookie cookie = Request.Cookies.Get("ID");
-            int loggedInId = Convert.ToInt32(cookie.Value);
-            User user = unitOfWork.UserRepository.GetById(loggedInId);
-            ViewBag.Id = loggedInId;
-            ViewBag.FullName = user.UserName + " " + user.UserSurname;
-            List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
-            return View(notifications);
+            if (Session["FullName"] != null)
+            {
+                HttpCookie cookie = Request.Cookies.Get("ID");
+                int loggedInId = Convert.ToInt32(cookie.Value);
+                User user = unitOfWork.UserRepository.GetById(loggedInId);
+                ViewBag.Id = loggedInId;
+                ViewBag.FullName = user.UserName + " " + user.UserSurname;
+                List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
+                return View(notifications);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         
         public ActionResult Edit()
         {
+
             HttpCookie cookie = Request.Cookies.Get("ID");
             int loggedInId = Convert.ToInt32(cookie.Value);
-            if (loggedInId >0)
-            {
+           if (Session["FullName"] != null)
+           {
+                    
                 User user = unitOfWork.UserRepository.GetById(loggedInId);
                 ViewBag.Id = loggedInId;
                 ViewBag.FullName = user.UserName + " " + user.UserSurname;
@@ -130,9 +161,17 @@ namespace Forum_Final.Controllers
         }
         public ActionResult SignOut()
         {
-            Response.Cookies["ID"].Value = "0";
-            return RedirectToAction("Login");
+            if (Session["FullName"] != null)
+            {
+                Response.Cookies["ID"].Value = "0";
+                Session["FullName"] = null;
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                return RedirectToAction("Login");
 
+            }
         }
 
     }

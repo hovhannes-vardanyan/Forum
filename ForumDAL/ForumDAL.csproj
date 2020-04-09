@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202003151127066_Initial.designer.cs">
       <DependentUpon>202003151127066_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004082118143_AddCheckedPropertytoNotifications.cs" />
+    <Compile Include="Migrations\202004082118143_AddCheckedPropertytoNotifications.designer.cs">
+      <DependentUpon>202004082118143_AddCheckedPropertytoNotifications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Message.cs" />
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003151127066_Initial.resx">
       <DependentUpon>202003151127066_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004082118143_AddCheckedPropertytoNotifications.resx">
+      <DependentUpon>202004082118143_AddCheckedPropertytoNotifications.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
