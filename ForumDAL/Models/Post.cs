@@ -18,6 +18,8 @@ namespace ForumDAL
             this.Description = description;
 
         }
+
+        
         public Post()
         {
 
@@ -44,6 +46,9 @@ namespace ForumDAL
             return this.PostID.GetHashCode();
         }
 
-
+        public int getUSerId()
+        {
+            return UserID;
+        }
     }
 }

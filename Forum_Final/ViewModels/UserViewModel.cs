@@ -10,6 +10,7 @@ namespace Forum_Final.ViewModels
     //Class for passing multiple models
     public class UserViewModel
     {
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string UserSurname { get; set; }
 

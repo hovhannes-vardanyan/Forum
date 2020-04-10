@@ -1,8 +1,29 @@
-﻿@model List<ForumDAL.Post>
-
-@{
-    ViewBag.Title = "PostPage";
-}
+﻿@using ForumDAL
+@using ForumDAL.Repositories
+@model Forum_Final.ViewModels.PostViewModel
 
 
+<div class="row">
+    <div class="col-md-4">
+        @Html.Partial("Topics")
 
+    </div>
+
+
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">My Posts</div>
+            <div class="panel-body">
+                
+                <ul>
+                    @foreach (var comment in Model.comments)
+                    {
+                        <li class="list-group-item">@comment.Description</li>
+                    }
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+</div>

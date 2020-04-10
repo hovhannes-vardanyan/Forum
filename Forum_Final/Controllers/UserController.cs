@@ -94,12 +94,13 @@ namespace Forum_Final.Controllers
 
                 UserViewModel userViewModel = new UserViewModel
                 {
+                    UserId = user.UserId,
                     UserName = user.UserName,
                     UserSurname = user.UserSurname,
                     posts = unitOfWork.UserRepository.GetPosts(user.UserId).ToList()
                 };
 
-                return View("Profile",user);
+                return View("Profile",userViewModel);
             }
             else
             {
