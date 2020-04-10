@@ -91,6 +91,14 @@ namespace Forum_Final.Controllers
                 Session["Id"] = user.UserId;
                 Session["FullName"] = user.UserName + " " + user.UserSurname;
                 Session["Notifications"] = unitOfWork.UserRepository.ShowNotification(loggedInId);
+
+                UserViewModel userViewModel = new UserViewModel
+                {
+                    UserName = user.UserName,
+                    UserSurname = user.UserSurname,
+                    posts = unitOfWork.UserRepository.GetPosts(user.UserId).ToList()
+                };
+
                 return View("Profile",user);
             }
             else
@@ -174,5 +182,9 @@ namespace Forum_Final.Controllers
             }
         }
 
+       
+
+     
     }
+
 }

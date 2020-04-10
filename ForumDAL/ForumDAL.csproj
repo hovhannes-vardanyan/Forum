@@ -55,13 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IMessage.cs" />
-    <Compile Include="Migrations\202003151127066_Initial.cs" />
-    <Compile Include="Migrations\202003151127066_Initial.designer.cs">
-      <DependentUpon>202003151127066_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004082118143_AddCheckedPropertytoNotifications.cs" />
-    <Compile Include="Migrations\202004082118143_AddCheckedPropertytoNotifications.designer.cs">
-      <DependentUpon>202004082118143_AddCheckedPropertytoNotifications.cs</DependentUpon>
+    <Compile Include="Migrations\202004091936539_update-database.cs" />
+    <Compile Include="Migrations\202004091936539_update-database.designer.cs">
+      <DependentUpon>202004091936539_update-database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -88,11 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003151127066_Initial.resx">
-      <DependentUpon>202003151127066_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004082118143_AddCheckedPropertytoNotifications.resx">
-      <DependentUpon>202004082118143_AddCheckedPropertytoNotifications.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004091936539_update-database.resx">
+      <DependentUpon>202004091936539_update-database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

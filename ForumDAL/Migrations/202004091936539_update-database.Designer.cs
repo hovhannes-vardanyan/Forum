@@ -7,13 +7,13 @@ namespace ForumDAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class AddCheckedPropertytoNotifications : IMigrationMetadata
+    public sealed partial class updatedatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCheckedPropertytoNotifications));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004082118143_AddCheckedPropertytoNotifications"; }
+            get { return "202004091936539_update-database"; }
         }
         
         string IMigrationMetadata.Source
