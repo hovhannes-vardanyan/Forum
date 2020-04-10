@@ -21,7 +21,7 @@
                     @foreach (var post in Model.posts)
                     {
                        // <li class="list-group-item">@Html("PostPage", "Post") @post.Title</li>
-                        <li class="list-group-item">@Html.ActionLink("PostPage.cshtml", "Views/Post") @post.Title</li>
+                        <li class="list-group-item">@Html.ActionLink($"{post.Title}", "Index", "Post", new { id = post.PostID }, null)</li>
 
                     }
                 </ul>

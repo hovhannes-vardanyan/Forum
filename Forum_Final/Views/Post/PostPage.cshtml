@@ -4,26 +4,41 @@
 
 
 <div class="row">
-    <div class="col-md-4">
-        @Html.Partial("Topics")
 
-    </div>
 
 
     <div class="col-md-8">
         <div class="panel panel-info">
-            <div class="panel-heading">My Posts</div>
+            <div class="panel-heading">Post Describtion</div>
             <div class="panel-body">
-                
+
+                @Model.postDescription;
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">Comments</div>
+            <div class="panel-body">
+
                 <ul>
                     @foreach (var comment in Model.comments)
                     {
-                        <li class="list-group-item">@comment.Description</li>
+                        // <li class="list-group-item">@Html("PostPage", "Post") @post.Title</li>
+                        <li class="list-group-item">@comment.Title</li>
+
                     }
                 </ul>
 
 
             </div>
         </div>
+
+
     </div>
+
 </div>

@@ -16,22 +16,19 @@ namespace Forum_Final.Controllers
         // GET: Post
         UnitOfWork unitOfWork = new UnitOfWork(new ForumContext());
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             if (Request.Cookies["ID"].Value != "0")
             {
-                HttpCookie cookie = Request.Cookies.Get("ID");
 
-                int postetInID = Convert.ToInt32(cookie.Value);
-
-                Post posting = unitOfWork.PostRepository.GetPostById(postetInID);
+                Post posting = unitOfWork.PostRepository.GetPostById(id);
 
 
                 PostViewModel postViewModel = new PostViewModel
                 {
 
                     postDescription = posting.Description,
-                    comments = unitOfWork.PostRepository.GetComments(posting.PostID).ToList()
+                    comments = unitOfWork.PostRepository.GetComments(id).ToList()
                     
                 };
 
