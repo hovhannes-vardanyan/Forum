@@ -27,7 +27,7 @@ namespace Forum_Final.Controllers
                 PostViewModel postViewModel = new PostViewModel
                 {
 
-                    postDescription = posting.Description,
+                    post = posting,
                     comments = unitOfWork.PostRepository.GetComments(id).ToList()
                     
                 };

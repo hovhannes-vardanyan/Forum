@@ -9,7 +9,7 @@ namespace Forum_Final.ViewModels
     public class PostViewModel
     {
       
-        public string postDescription { get; set; }
+        public Post post { get; set; }
 
         public List<Comment> comments { get; set; }
     }
