@@ -1,31 +1,41 @@
-﻿@model Forum_Final.ViewModels.UserViewModel
+﻿@model ForumDAL.User
 @{
     ViewBag.Title = "Login";
 }
 
 
 <div class="row">
-    <div class="col-md-5">
+    <div>
         <h2>Login</h2>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <div class="container">
+            <div class="row">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <p>@Html.LabelFor(model => model.UserLogin) @Html.EditorFor(model => model.UserLogin)</p>
-            <p>
-                @Html.LabelFor(model => model.UserPassword) @Html.PasswordFor(model => model.UserPassword)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserLogin)
+                        @Html.TextBoxFor(model => model.UserLogin, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserLogin)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserPassword)
+                        @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserPassword)
 
-            </p>
-            <p><input type="submit" value="Login" /></p>
-            <p class="alert-danger">@ViewBag.Message</p>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Login</button>
+                    <p class="alert-danger">@ViewBag.Message</p>
 
 
 
 
 
-        }
+                }
+            </div>
+        </div>
     </div>
 </div>
 

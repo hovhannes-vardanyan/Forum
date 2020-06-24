@@ -22,7 +22,6 @@ namespace ForumDAL
         public string UserSurname { get; set; }
         [Display(Name = "Username")]
         [Required(ErrorMessage ="Enter username")]
-
         public string UserLogin { get; set; }
         [Display(Name = "Password")]
         [Required(ErrorMessage ="Enter the password")]

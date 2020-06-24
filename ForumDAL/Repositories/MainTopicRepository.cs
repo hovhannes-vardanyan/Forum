@@ -1,6 +1,7 @@
 ﻿using ForumDAL.Models.Topics;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,5 +35,10 @@ namespace ForumDAL.Repositories
             context.subTopics.Add(subTopic);
             context.SaveChanges();
         }
+        public IEnumerable<MainTopic> GetTopics()
+        {
+            return this.context.Topics.Include(s=>s.subtopics);
+        }
+
     }
 }

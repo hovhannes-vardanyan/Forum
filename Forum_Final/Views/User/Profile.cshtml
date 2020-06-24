@@ -2,32 +2,42 @@
 @using ForumDAL.Repositories
 @model Forum_Final.ViewModels.UserViewModel
  
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Topics</div>
+                    <div class="panel-body">
+                        @foreach (var topic in Model.Topics)
+                        {
+                            <h3><a href="">@topic.TopicName</a></h3>
+                            <p>
+                                @foreach (var subTopic in topic.subtopics)
+                                {
+                                <p>@subTopic.SubtopicName</p>
+                            }</p>
+                            }
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-info">
+                    <div class="panel-heading">My Posts</div>
+                    <div class="panel-body">
+
+                        <ul>
+                            @foreach (var post in Model.posts)
+                            {
+                                // <li class="list-group-item">@Html("PostPage", "Post") @post.Title</li>
+                                <li class="list-group-item">@Html.ActionLink($"{post.Title}", "Index", "Post", new { id = post.PostID }, null)</li>
+
+                            }
+                        </ul>
 
 
-
-<div class="row">
-    <div class="col-md-4">
-        @Html.Partial("Topics")
-
-    </div>
-
-
-    <div class="col-md-8">
-        <div class="panel panel-info">
-            <div class="panel-heading">My Posts</div>
-            <div class="panel-body">
-             
-                <ul>
-                    @foreach (var post in Model.posts)
-                    {
-                       // <li class="list-group-item">@Html("PostPage", "Post") @post.Title</li>
-                        <li class="list-group-item">@Html.ActionLink($"{post.Title}", "Index", "Post", new { id = post.PostID }, null)</li>
-
-                    }
-                </ul>
-
-                
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>

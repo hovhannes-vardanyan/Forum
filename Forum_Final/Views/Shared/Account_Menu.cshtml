@@ -3,6 +3,7 @@
 
     if (Request.Cookies.Get("ID").Value != "0" && Session["FullName"] != null)
     {
+
         <ul class="nav navbar-nav navbar-right">
             <li>
                 @Html.ActionLink($"{Session["FullName"]}", "Index", "User")
@@ -44,11 +45,11 @@
     }
 
 
-    
-        <script>
+
+    <script>
     window.setInterval(function () {
         $("#not_number").load("@Url.Action("Notification","User")");
     }, 5000);
-        </script>
-    
+    </script>
+
 }               

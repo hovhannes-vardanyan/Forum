@@ -1,8 +1,11 @@
-﻿<div class="panel panel-info">
+﻿@model List<ForumDAL.Models.Topics.MainTopic>
+<div class="panel panel-info">
     <div class="panel-heading">Topics</div>
     <div class="panel-body">
-        <h3>Programming</h3>
-        <h3>Programming</h3>
+        @foreach (var topic in Model)
+        {
+            <h3>@topic.TopicName</h3>
+        }
     </div>
 </div>
 

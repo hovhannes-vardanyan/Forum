@@ -72,6 +72,20 @@ namespace ForumDAL.Repositories
         {
             return context.Notifications.Where(n => n.UserId == user_id).ToList();
         }
+        public int CheckCount(int user_id)
+        {
+            int c = 0;
+            var notifications = ShowNotification(user_id);
+            foreach (var item in notifications)
+            {
+                if (!item.Checked)
+                {
+                    c++;
+                }
+            }
+            return c;
+        }
+
 
     }
 }

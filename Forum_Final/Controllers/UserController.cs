@@ -7,12 +7,15 @@ using System.Web;
 using System.Web.Mvc;
 using ForumDAL.Models;
 using Forum_Final.ViewModels;
+using Microsoft.Ajax.Utilities;
 
 namespace Forum_Final.Controllers
 {
     public class UserController : Controller
     {
         UnitOfWork unitOfWork = new UnitOfWork(new ForumContext());
+
+        
         public ActionResult Register()
         {
             if (Session["FullName"] == null)
@@ -97,8 +100,11 @@ namespace Forum_Final.Controllers
                     UserId = user.UserId,
                     UserName = user.UserName,
                     UserSurname = user.UserSurname,
-                    posts = unitOfWork.UserRepository.GetPosts(user.UserId).ToList()
+                    posts = unitOfWork.UserRepository.GetPosts(user.UserId).ToList(),
+                    Topics = unitOfWork.MainTopicRepository.GetTopics()
                 };
+                ViewBag.Count = unitOfWork.UserRepository.CheckCount(loggedInId);
+
 
                 return View("Profile",userViewModel);
             }
@@ -116,6 +122,7 @@ namespace Forum_Final.Controllers
                 HttpCookie cookie = Request.Cookies.Get("ID");
                 int loggedInId = Convert.ToInt32(cookie.Value);
                 List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
+                
                 return View(notifications);
             }
             else
@@ -133,6 +140,7 @@ namespace Forum_Final.Controllers
                 ViewBag.Id = loggedInId;
                 ViewBag.FullName = user.UserName + " " + user.UserSurname;
                 List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
+                ViewBag.Count = unitOfWork.UserRepository.CheckCount(loggedInId);
                 return View(notifications);
             }
             else
@@ -182,8 +190,13 @@ namespace Forum_Final.Controllers
 
             }
         }
+        public PartialViewResult Topics()
+        {
+            var topics = unitOfWork.MainTopicRepository.GetTopics();
+            return PartialView(topics.ToList());
+        }
 
-       
+        
 
      
     }

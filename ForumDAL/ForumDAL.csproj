@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202004091936539_update-database.designer.cs">
       <DependentUpon>202004091936539_update-database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006231401449_AddingMainTopicId.cs" />
+    <Compile Include="Migrations\202006231401449_AddingMainTopicId.designer.cs">
+      <DependentUpon>202006231401449_AddingMainTopicId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Message.cs" />
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004091936539_update-database.resx">
       <DependentUpon>202004091936539_update-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006231401449_AddingMainTopicId.resx">
+      <DependentUpon>202006231401449_AddingMainTopicId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

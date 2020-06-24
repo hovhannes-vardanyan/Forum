@@ -2,13 +2,13 @@
     ViewBag.Title = "SearchResultPage";
 }
 
-<h2>Results</h2>
+<h2>SearchResultPage</h2>
 <ul>
     @foreach (var post in ViewBag.Result)
     {
-    <li class="list-group-item">
+        <li class="list-group-item">
         @Html.ActionLink($"{post.Key.Title}", "Index", "Post", new { id = post.Key.PostID }, null)
-    </li>
+        </li>
 
 
     }

@@ -21,11 +21,11 @@
                         Notifications
                         <span id="notification">
                             @{List<Notification> notifications = ViewBag.Notifications; }
-                            @if (notifications.Count > 0)
+                            @if (ViewBag.Count>0)
                             {
                                 <span id="number" style="border-radius:50%;border:1px solid #000;background:red;color:white;padding:0px 5px;">
 
-                                    @notifications.Count
+                                    @ViewBag.Count
 
 
 

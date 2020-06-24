@@ -13,6 +13,7 @@ namespace ForumDAL.Models.Topics
         public int SubTopicID { get; set; }
         public string SubtopicName { get; set; }
         public ICollection<Post> posts { get; set; }
+        public int MainTopicId { get; set; }
 
         public SubTopic()
         {

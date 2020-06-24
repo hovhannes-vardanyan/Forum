@@ -4,14 +4,26 @@
 }
 
 
-<h2>Notifications</h2>
-<div class="panel">
-    <div class="panel-body">
-         <ul class="list-group">
-        @foreach (var notification in Model)
-        {
-            <li class="list-group-item"><a href="#">@notification.Message</a></li>
-        }
-    </ul>
+    <div class="container">
+        <h2>Notifications</h2>
+        <div class="panel">
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach (var notification in Model)
+                    {
+
+                        <li class="list-group-item"><a href="#">@notification.Message</a></li>
+                        if (!notification.Checked)
+                        {
+                            <li class="list-group-item">
+                                <a href="#"><strong>@notification.Message</strong> </a>
+                                <span class="glyphicon glyphicon-asterisk" style="float:right"></span>
+                            </li>
+
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
     </div>
-</div>

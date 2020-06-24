@@ -1,11 +1,5 @@
 ﻿
-@{
-    ViewBag.Title = "Search";
-}
-
-<h2>Search</h2>
-<form  method="post">
-    <input type="text" name="searchString" value="" />
-    <input type="submit" name="Search" />
-
-</form>
+    <form action="Search" method="post" class="navbar-form">
+        <input type="text" name="searchString" class="form-control"/>
+        <button class="btn btn-primary" type="submit">Q</button>
+    </form>
