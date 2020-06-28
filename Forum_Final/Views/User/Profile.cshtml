@@ -10,11 +10,11 @@
                     <div class="panel-body">
                         @foreach (var topic in Model.Topics)
                         {
-                            <h3><a href="">@topic.TopicName</a></h3>
+                            <h3>@topic.TopicName</h3>
                             <p>
                                 @foreach (var subTopic in topic.subtopics)
                                 {
-                                <p>@subTopic.SubtopicName</p>
+                                <p style="padding-left:5px;"><a href="../post/posts/@subTopic.SubTopicID">@subTopic.SubtopicName</a></p>
                             }</p>
                             }
                     </div>

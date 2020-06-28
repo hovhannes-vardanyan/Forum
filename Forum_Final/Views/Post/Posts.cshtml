@@ -1,0 +1,17 @@
+﻿@model Forum_Final.ViewModels.TopicPostsViewModel
+@{
+    ViewBag.Title = "Posts";
+}
+
+<h2>@Model.TopicName posts</h2>
+<ul>
+    @foreach (var post in Model.Posts)
+    {
+        <li class="list-group-item">
+            
+            @Html.ActionLink($"{post.Title}", "Index", "Post", new { id = post.PostID }, null)
+        </li>
+
+
+    }
+</ul>

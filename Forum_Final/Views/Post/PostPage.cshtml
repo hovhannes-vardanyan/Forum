@@ -4,7 +4,7 @@
 
 <h3>@Model.post.Title</h3>
 
-
+<span>@Model.UserName</span>
 <div class="row">
 
 
@@ -13,7 +13,7 @@
             <div class="panel-heading">Post Describtion</div>
             <div class="panel-body">
 
-                @Model.post.Description;
+                @Model.post.Description
 
             </div>
         </div>
@@ -30,12 +30,26 @@
                     @foreach (var comment in Model.comments)
                     {
                         // <li class="list-group-item">@Html("PostPage", "Post") @post.Title</li>
-                        <li class="list-group-item">@comment.Title</li>
+                        <li class="list-group-item">
+                            <h5>username</h5>
+                             @comment.Title
+                        </li>
 
                     }
+                
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label for="comment">Add Comment</label>
+                            <textarea name="comment"  rows="3" id="comment" class="form-control">
+
+                        </textarea>
+                        </div>
+                        <button class="btn btn-primary">Add</button>
+                    }
                 </ul>
-
-
+               
+                 
             </div>
         </div>
 

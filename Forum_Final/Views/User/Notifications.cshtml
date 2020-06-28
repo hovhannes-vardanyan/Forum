@@ -4,26 +4,38 @@
 }
 
 
-    <div class="container">
-        <h2>Notifications</h2>
-        <div class="panel">
-            <div class="panel-body">
-                <ul class="list-group">
-                    @foreach (var notification in Model)
+<div class="container">
+    <h2>Notifications</h2>
+    <div class="panel">
+        <div class="panel-body">
+            <ul class="list-group">
+                @foreach (var notification in Model)
+                {
+                    if (!notification.Checked)
                     {
+                        <li class="list-group-item">
+                            <a href="../post/index/@notification.Post_Id"><strong>@notification.Message</strong> </a>
+                            <span class="glyphicon glyphicon-asterisk" style="float:right"></span>
+                        </li>
 
-                        <li class="list-group-item"><a href="#">@notification.Message</a></li>
-                        if (!notification.Checked)
-                        {
-                            <li class="list-group-item">
-                                <a href="#"><strong>@notification.Message</strong> </a>
-                                <span class="glyphicon glyphicon-asterisk" style="float:right"></span>
-                            </li>
-
-                        }
                     }
-                </ul>
-            </div>
-        </div>
+                    else
+                    {
+                        <li class="list-group-item"><a href="../post/index/@notification.Post_Id">@notification.Message</a></li>
 
+                    }
+
+                }
+            </ul>
+        </div>
     </div>
+</div>
+@section Scripts{
+    <script>
+    window.setInterval(function () {
+        $("#not_number").load("@Url.Action("Notification","User")");
+    }, 5000);
+    </script>
+
+
+}

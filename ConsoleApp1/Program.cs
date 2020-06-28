@@ -20,7 +20,7 @@ namespace ConsoleApp1
                 UserID = 1,
                 Title = "Hello"
             };
-            unitOfWork.PostRepository.AddComments(comment, 4);
+            unitOfWork.PostRepository.AddComments(comment, 10);
 
 
 

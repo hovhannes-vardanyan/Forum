@@ -22,7 +22,7 @@ namespace Forum_Final.Controllers
             {
 
                 Post posting = unitOfWork.PostRepository.GetPostById(id);
-
+                
 
                 PostViewModel postViewModel = new PostViewModel
                 {
@@ -40,6 +40,21 @@ namespace Forum_Final.Controllers
                 return RedirectToAction("Profile");
             }
 
+        }
+        public ActionResult New()
+        {
+            return View();
+        }
+        public ActionResult Posts(int id)
+        {
+            var posts = unitOfWork.SubTopicRepository.GetPosts(id).ToList();
+            var name = unitOfWork.SubTopicRepository.GetSubtopicById(id).SubtopicName;
+            TopicPostsViewModel model = new TopicPostsViewModel
+            {
+                Posts=posts,
+                TopicName = name
+            };
+            return View(model);
         }
         
     }
