@@ -10,7 +10,13 @@
 
     <div class="col-md-12">
         <div class="panel panel-info">
-            <div class="panel-heading">Post Describtion</div>
+            <div class="panel-heading" style="height: 55px;">
+                <div class="postDescription" style="float: left; padding: 7px 0px;">Post Description</div>
+                <div class="editPostBtn" style="float: right;">
+                    <a href = "https://localhost:44384/Post/Edit/@Model.post.PostID" class="btn btn-primary" name="Edit">Edit</a>
+                </div>
+            </div>
+
             <div class="panel-body">
 
                 @Model.post.Description
@@ -32,24 +38,24 @@
                         // <li class="list-group-item">@Html("PostPage", "Post") @post.Title</li>
                         <li class="list-group-item">
                             <h5>username</h5>
-                             @comment.Title
+                            @comment.Title
                         </li>
 
                     }
-                
+
                     @using (Html.BeginForm())
                     {
                         <div class="form-group">
                             <label for="comment">Add Comment</label>
-                            <textarea name="comment"  rows="3" id="comment" class="form-control">
+                            <textarea name="title" rows="3" id="comment" class="form-control">
 
                         </textarea>
                         </div>
-                        <button class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary" name="NewComment">Add</button>
                     }
                 </ul>
-               
-                 
+
+
             </div>
         </div>
 

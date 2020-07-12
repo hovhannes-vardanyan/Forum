@@ -34,7 +34,7 @@ namespace ForumDAL.Repositories
             comment.PostID = postId;
             context.Comments.Add(comment);
             context.SaveChanges();
-
+            
         }
         // Edit Comment
         public void Edit(int commentID, Comment msg)

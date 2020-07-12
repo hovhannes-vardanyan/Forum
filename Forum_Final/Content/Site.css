@@ -46,3 +46,9 @@ select
 textarea{
     width:100%;
 }
+.panel-body .btn-primary {
+    text-decoration-line: none;
+}
+.new_post_btn {
+    margin-bottom: 15px;
+}

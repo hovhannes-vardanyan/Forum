@@ -78,9 +78,9 @@ namespace ForumDAL.Repositories
 
 
         }
-        public void Publish(Post post,int SubtopicID)
+        public void Publish(Post post, int UserID)
         {
-            post.SubtopicID = SubtopicID;
+            post.UserID = UserID;
             context.Posts.Add(post);
             context.SaveChanges();
 
@@ -95,9 +95,9 @@ namespace ForumDAL.Repositories
         {
 
             comment.PostID = postID;
-            var post = context.Posts.Where(p => p.PostID ==postID).First();
-            var user_get = context.usersData.Where(u=>u.UserId ==post.UserID).First();
-            var user_send = context.usersData.Where(u=>u.UserId ==post.UserID).First();
+            var post = context.Posts.Where(p => p.PostID == postID).First();
+            var user_get = context.usersData.Where(u => u.UserId == post.UserID).First();
+            var user_send = context.usersData.Where(u => u.UserId == post.UserID).First();
 
             Notification notification = new Notification()
             {
@@ -107,7 +107,7 @@ namespace ForumDAL.Repositories
 
             };
             context.Notifications.Add(notification);
-           
+
             context.Comments.Add(comment);
             context.SaveChanges();
 

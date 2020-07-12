@@ -13,5 +13,6 @@ namespace Forum_Final.ViewModels
 
         public List<Comment> comments { get; set; }
         public string UserName { get; set; }
+        public string CommentTitle { get; set; }
     }
 }
