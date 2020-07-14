@@ -15,5 +15,6 @@ namespace ForumDAL.Models
 
         public int UserId { get; set; }
         public bool Checked { get; set; }
+        public int CommentID { get; set; }
     }
 }

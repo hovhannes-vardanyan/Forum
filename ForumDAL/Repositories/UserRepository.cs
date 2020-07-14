@@ -70,7 +70,7 @@ namespace ForumDAL.Repositories
 
         public  List<Notification> ShowNotification(int user_id)
         {
-            return context.Notifications.Where(n => n.UserId == user_id).ToList();
+            return context.Notifications.Where(n => n.UserId == user_id).OrderByDescending(n=>n.Id).ToList();
         }
         public int CheckCount(int user_id)
         {
@@ -85,7 +85,15 @@ namespace ForumDAL.Repositories
             }
             return c;
         }
-
+        public Notification GetNotificationById(int id)
+        {
+            return context.Notifications.Where(n=>n.Id ==id).FirstOrDefault();
+        }
+        public void  CheckNotification(Notification notification) 
+        {
+            notification.Checked = true;
+            context.SaveChanges();
+        }
 
     }
 }

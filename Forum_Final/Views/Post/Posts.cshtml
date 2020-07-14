@@ -4,14 +4,38 @@
 }
 
 <h2>@Model.TopicName posts</h2>
-<ul>
-    @foreach (var post in Model.Posts)
-    {
-        <li class="list-group-item">
-            
-            @Html.ActionLink($"{post.Title}", "Index", "Post", new { id = post.PostID }, null)
-        </li>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">Topics</div>
+                <div class="panel-body">
+                    @foreach (var topic in Model.Topics)
+                    {
+                        <h3>@topic.TopicName</h3>
+                        <p>
+                            @foreach (var subTopic in topic.subtopics)
+                            {
+                            <p style="padding-left:5px;"><a href="../../post/posts/@subTopic.SubTopicID">@subTopic.SubtopicName</a></p>
+                        }</p>
+                        }
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <ul>
+                @foreach (var post in Model.Posts)
+                {
+                    <li class="list-group-item">
+
+                        @Html.ActionLink($"{post.Title}", "Index", "Post", new { id = post.PostID }, null)
+                    </li>
 
 
-    }
-</ul>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+

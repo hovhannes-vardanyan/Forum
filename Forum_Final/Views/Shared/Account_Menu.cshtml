@@ -1,9 +1,12 @@
 ﻿@using ForumDAL.Models
+@using ForumDAL.Repositories
+@using ForumDAL
 @{
 
+    
     if (Request.Cookies.Get("ID").Value != "0" && Session["FullName"] != null)
     {
-
+        var count = new UnitOfWork(new ForumContext()).UserRepository.CheckCount(Convert.ToInt32(Request.Cookies.Get("ID").Value));
         <ul class="nav navbar-nav navbar-right">
             <li>
                 @Html.ActionLink($"{Session["FullName"]}", "Index", "User")
@@ -12,9 +15,11 @@
             <li>
                 @Html.ActionLink("Notifications", "Notifications", "User", new { area = "" }, new { @class = "notifications" })
                 @{
-                    List<Notification> notifications = (List<Notification>)Session["Notifications"];
+                    if (count > 0)
+                    {
+                        <span id="not_number">@count</span>
 
-                    <span id="not_number">@Html.Partial("~/Views/User/Notification.cshtml", notifications)</span>
+                    }
                 }
             </li>
             <li class="nav-item dropdown">
@@ -46,6 +51,5 @@
 
 
 
-    
-} 
-              
+
+}

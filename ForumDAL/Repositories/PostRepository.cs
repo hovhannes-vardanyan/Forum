@@ -13,6 +13,7 @@ namespace ForumDAL.Repositories
     public class PostRepository : IMessage<Post>
     {
         ForumContext context;
+       
         public PostRepository(ForumContext context)
         {
             this.context = context;
@@ -22,7 +23,7 @@ namespace ForumDAL.Repositories
 
             try
             {
-                var post = context.Posts.Where(p => p.PostID == PostID).First();
+                var post = context.Posts.Where(p => p.PostID == PostID).Include(m=>m.Comments).First();
                 return post;
             }
             catch (InvalidOperationException)
@@ -91,24 +92,26 @@ namespace ForumDAL.Repositories
         }
 
         //Add comments into Comment List
-        public void AddComments(Comment comment, int postID)
+        public void AddComments(Comment comment, int postID, User user_send)
         {
 
             comment.PostID = postID;
             var post = context.Posts.Where(p => p.PostID == postID).First();
             var user_get = context.usersData.Where(u => u.UserId == post.UserID).First();
-            var user_send = context.usersData.Where(u => u.UserId == post.UserID).First();
-
             Notification notification = new Notification()
             {
                 Message = $"New Comment from {user_send.UserName} in {post.Title} ",
                 Post_Id = postID,
-                UserId = user_get.UserId
+                UserId = user_get.UserId,
+               
 
             };
-            context.Notifications.Add(notification);
-
             context.Comments.Add(comment);
+            context.SaveChanges();
+
+            notification.CommentID = comment.CommentID;
+            if (user_get.UserId != user_send.UserId)
+            context.Notifications.Add(notification);
             context.SaveChanges();
 
         }

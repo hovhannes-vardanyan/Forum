@@ -1,4 +1,5 @@
 ﻿using ForumDAL;
+using ForumDAL.Models;
 using ForumDAL.Models.Topics;
 using ForumDAL.Repositories;
 using System;
@@ -20,10 +21,9 @@ namespace Forum_Final.ViewModels
         public string UserPassword { get; set; }
 
         public List<Post> posts { get; set; }
+        public List<Notification> Notifications { get; set; }
         public IEnumerable<MainTopic> Topics{ get; set; }
 
+
     }
-
-   
-
 }

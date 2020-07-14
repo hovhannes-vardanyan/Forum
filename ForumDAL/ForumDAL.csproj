@@ -63,6 +63,14 @@
     <Compile Include="Migrations\202006231401449_AddingMainTopicId.designer.cs">
       <DependentUpon>202006231401449_AddingMainTopicId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007130811250_AddDataAnotations.cs" />
+    <Compile Include="Migrations\202007130811250_AddDataAnotations.designer.cs">
+      <DependentUpon>202007130811250_AddDataAnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007130928290_NotifactionCommentId.cs" />
+    <Compile Include="Migrations\202007130928290_NotifactionCommentId.designer.cs">
+      <DependentUpon>202007130928290_NotifactionCommentId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Message.cs" />
@@ -94,9 +102,13 @@
     <EmbeddedResource Include="Migrations\202006231401449_AddingMainTopicId.resx">
       <DependentUpon>202006231401449_AddingMainTopicId.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007130811250_AddDataAnotations.resx">
+      <DependentUpon>202007130811250_AddDataAnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007130928290_NotifactionCommentId.resx">
+      <DependentUpon>202007130928290_NotifactionCommentId.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  
-  
   <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

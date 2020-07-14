@@ -6,12 +6,15 @@
 <h2>New</h2>
 @using (Html.BeginForm())
 {
-
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 <div class="form-group">
-    <label for="topic">Select topic</label>
-    <select id="topic" class="form-control" name="SubtopicID">
+    <label for="SubtopicID">Select topic</label>
+    <select id="SubtopicID" class="form-control" name="SubtopicID">
+        <option >    </option>
         @foreach (var topic in ViewBag.Topics)
         {
+
             <optgroup label="@topic.TopicName">
                 @foreach (var subtopic in topic.subtopics)
                 {
@@ -21,15 +24,19 @@
             </optgroup>
         }
     </select>
-</div> 
+    @Html.ValidationMessageFor(m => m.SubtopicID, "Choose topic")
+
+</div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Title)
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Description)
         @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Description)
     </div>
     <button class="btn btn-primary">Create</button>
 

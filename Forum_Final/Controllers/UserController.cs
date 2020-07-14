@@ -44,7 +44,6 @@ namespace Forum_Final.Controllers
                 {
                     ViewBag.Message = "User with that username already exist ";
                 }
-
             }
             return View();
         }
@@ -93,7 +92,7 @@ namespace Forum_Final.Controllers
                 User user = unitOfWork.UserRepository.GetById(loggedInId);
                 Session["Id"] = user.UserId;
                 Session["FullName"] = user.UserName + " " + user.UserSurname;
-                Session["Notifications"] = unitOfWork.UserRepository.ShowNotification(loggedInId);
+                ViewBag.Notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
 
                 UserViewModel userViewModel = new UserViewModel
                 {
@@ -114,7 +113,6 @@ namespace Forum_Final.Controllers
             }
 
         }
-
         public ActionResult Notification() 
         {
             if (Session["FullName"] != null)
@@ -122,7 +120,15 @@ namespace Forum_Final.Controllers
                 HttpCookie cookie = Request.Cookies.Get("ID");
                 int loggedInId = Convert.ToInt32(cookie.Value);
                 List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
-                
+                int count = 0;
+                foreach (var n in notifications)
+                {
+                    if (!n.Checked)
+                    {
+                        count++;
+                    }
+                }
+                ViewBag.Count = count;
                 return View(notifications);
             }
             else
@@ -140,7 +146,7 @@ namespace Forum_Final.Controllers
                 ViewBag.Id = loggedInId;
                 ViewBag.FullName = user.UserName + " " + user.UserSurname;
                 List<Notification> notifications = unitOfWork.UserRepository.ShowNotification(loggedInId);
-                ViewBag.Count = unitOfWork.UserRepository.CheckCount(loggedInId);
+               
                 return View(notifications);
             }
             else
@@ -148,8 +154,6 @@ namespace Forum_Final.Controllers
                 return RedirectToAction("Login");
             }
         }
-
-        
         public ActionResult Edit()
         {
 
@@ -195,10 +199,15 @@ namespace Forum_Final.Controllers
             var topics = unitOfWork.MainTopicRepository.GetTopics();
             return PartialView(topics.ToList());
         }
-
-        
-
-     
+        public ActionResult CheckNotification(int id)
+        {
+            if(id == 0)
+            {
+                return RedirectToAction("Notification");
+            }
+            var notification = unitOfWork.UserRepository.GetNotificationById(id);
+            unitOfWork.UserRepository.CheckNotification(notification);
+            return RedirectToAction("Index","Post",new { id =notification.Post_Id, commentId= Uri.EscapeDataString("#")+"notify-"+notification.CommentID});
+        }
     }
-
 }

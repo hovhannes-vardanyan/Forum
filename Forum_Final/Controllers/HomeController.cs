@@ -13,20 +13,23 @@ namespace Forum_Final.Controllers
         UnitOfWork unitOfWork = new UnitOfWork(new ForumContext());
         public ActionResult Index()
         {
-            HttpCookie cookie = Request.Cookies.Get("ID");
-            if (cookie!=null  && cookie.Value!="0")
+            if (Request.Cookies["ID"]==null)
             {
-                int loggedInId = Convert.ToInt32(cookie.Value);
+                HttpCookie cookie = new HttpCookie("ID");
+                cookie.Value = "0";
+                Response.Cookies.Add(cookie);
+            }
+            if (Request.Cookies["ID"].Value != "0")
+            {
+
+                int loggedInId = Convert.ToInt32(Request.Cookies["ID"].Value);
 
                 var user = unitOfWork.UserRepository.GetById(loggedInId);
                 ViewBag.FullName = user.UserName + " " + user.UserSurname;
-                ViewBag.Notifications = unitOfWork.UserRepository.ShowNotification(loggedInId).ToList();
-                return View();
+                ViewBag.Notifications = unitOfWork.UserRepository.CheckCount(loggedInId);
             }
-            else
-            {
-                return View();
-            }
+            var topics = unitOfWork.MainTopicRepository.GetTopics().ToList();
+            return View(topics);
         }
 
         public ActionResult About()

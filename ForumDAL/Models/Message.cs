@@ -10,10 +10,15 @@ namespace ForumDAL
     public abstract class Message
     {
         public int PostID { get; set; }
+        [Required(ErrorMessage = "Enter the title")]
         public string Title { get; set; }
+        [Required]
+
         public int UserID { get; set; }
+        [Required]
 
         public int SubtopicID { get; set; }
+        [Required]
 
         public int MaintopicID { get; set; }
 

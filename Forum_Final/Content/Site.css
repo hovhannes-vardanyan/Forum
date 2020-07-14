@@ -43,8 +43,11 @@ select
 .field-validation-error{
     color:red;
 }
-textarea{
-    width:100%;
+.field-validation-valid{
+    display:none;
+}
+textarea {
+    width: 100%;
 }
 .panel-body .btn-primary {
     text-decoration-line: none;

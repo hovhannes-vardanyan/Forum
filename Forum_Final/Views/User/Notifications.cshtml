@@ -14,15 +14,16 @@
                     if (!notification.Checked)
                     {
                         <li class="list-group-item">
-                            <a href="../post/index/@notification.Post_Id"><strong>@notification.Message</strong> </a>
+                            @Html.ActionLink(@notification.Message, "CheckNotification", new { id = notification.Id })
                             <span class="glyphicon glyphicon-asterisk" style="float:right"></span>
                         </li>
 
                     }
                     else
                     {
-                        <li class="list-group-item"><a href="../post/index/@notification.Post_Id">@notification.Message</a></li>
-
+                        <li class="list-group-item">
+                             @Html.ActionLink(@notification.Message, "CheckNotification", new { id = notification.Id })
+                        </li>
                     }
 
                 }
@@ -30,12 +31,3 @@
         </div>
     </div>
 </div>
-@section Scripts{
-    <script>
-    window.setInterval(function () {
-        $("#not_number").load("@Url.Action("Notification","User")");
-    }, 5000);
-    </script>
-
-
-}
