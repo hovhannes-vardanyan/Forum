@@ -207,7 +207,7 @@ namespace Forum_Final.Controllers
             }
             var notification = unitOfWork.UserRepository.GetNotificationById(id);
             unitOfWork.UserRepository.CheckNotification(notification);
-            return RedirectToAction("Index","Post",new { id =notification.Post_Id, commentId= Uri.EscapeDataString("#")+"notify-"+notification.CommentID});
+            return RedirectToAction("Index","Post",new { id = notification.Post_Id });
         }
     }
 }

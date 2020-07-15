@@ -14,17 +14,7 @@ namespace Forum_Final
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-               name: "Notifiction",
-               url: "{controller}/{action}/{id}/{commentId}",
-               defaults: new
-               {
-                   controller = "Post",
-                   action = "Index",
-                   id = UrlParameter.Optional,
-                   commentId = UrlParameter.Optional
-               }
-           );
+           
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
